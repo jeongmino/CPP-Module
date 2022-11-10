@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:36:21 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/09 15:53:57 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/09 22:56:31 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 
 #include <iomanip>
 #include <iostream>
+
+
+enum dataInfo {
+    F_NAME,
+    L_NAME,
+    N_NAME,
+    P_NUM,
+    D_SECRET
+};
 
 class Contact{
     private :
@@ -27,7 +36,16 @@ class Contact{
         
     public : 
         Contact(void);
-        void    addContact(const std::string strs);
+        void setFirstName(std::string str);
+        void setLastName(std::string str);
+        void setNickName(std::string str);
+        void setPhoneNumber(std::string str);
+        void setDarkestSecret(std::string str);
+        std::string getFirstName(void);
+        std::string getLastName(void);
+        std::string getNickName(void);
+        std::string getPhoneNumber(void);
+        std::string getDarkest(void);
         ~Contact();
 }
 
