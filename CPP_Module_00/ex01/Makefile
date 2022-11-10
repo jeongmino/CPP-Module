@@ -6,7 +6,7 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 19:43:14 by junoh             #+#    #+#              #
-#    Updated: 2022/11/10 13:07:24 by junoh            ###   ########.fr        #
+#    Updated: 2022/11/10 14:53:10 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,16 @@ SRCS =	./PhoneBook.cpp\
 		./main.cpp\
 		./PhoneBookUtil.cpp
 
-CC = clang++
+CXX = c++
 NAME = phonebook
 
-CFLANG = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLANG) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 clean : 
 		rm -rf $(OBJS)
