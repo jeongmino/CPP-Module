@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:15:29 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/10 17:29:47 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/11 01:55:52 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class Weapon{
         std::string getType(void) const;
         void    setType(std::string type);
         ~Weapon();
-}
+};
 
 #endif

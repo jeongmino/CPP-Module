@@ -5,30 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 01:54:46 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/11 01:55:20 by junoh            ###   ########.fr       */
+/*   Created: 2022/11/11 02:07:33 by junoh             #+#    #+#             */
+/*   Updated: 2022/11/11 02:17:15 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "Harl.hpp"
 
 int main()
 {
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanA bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
-    }
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanB jim("Jim");
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
+	Harl harl;
+	std::cout << "\n@@@@@@@@@@@@ DEBUG @@@@@@@@@@@@\n" << std::endl;
+	harl.complain("DEBUG");
+	std::cout << "\n@@@@@@@@@@@@ INFO @@@@@@@@@@@@\n" << std::endl;
+	harl.complain("INFO");
+	std::cout << "\n@@@@@@@@@@@@ WARNING @@@@@@@@@@@@\n" << std::endl;
+	harl.complain("WARNING");
+	std::cout << "\n@@@@@@@@@@@@ ERROR @@@@@@@@@@@@\n" << std::endl;
+	harl.complain("ERROR");
+	std::cout << "\n@@@@@@@@@@@@ EXCEPTION @@@@@@@@@@@@\n" << std::endl;
+	harl.complain("asdawaasfawijoaisjoidjawoidmska");
+    std::cout <<std::endl;
 }

@@ -6,7 +6,7 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
-#    Updated: 2022/11/11 01:55:40 by junoh            ###   ########.fr        #
+#    Updated: 2022/11/11 02:12:18 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEPS_DIR	:=	deps/
 SRCS		:=	$(wildcard *.cpp)
 OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 DEPS		:=	$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
-NAME		:=	Weapon
+NAME		:=	Harl
 
 all : $(NAME)
 
