@@ -6,13 +6,14 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 19:43:14 by junoh             #+#    #+#              #
-#    Updated: 2022/11/09 20:50:39 by junoh            ###   ########.fr        #
+#    Updated: 2022/11/10 13:07:24 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	./PhoneBook.cpp\
 		./Contact.cpp\
-		./main.cpp
+		./main.cpp\
+		./PhoneBookUtil.cpp
 
 CC = clang++
 NAME = phonebook

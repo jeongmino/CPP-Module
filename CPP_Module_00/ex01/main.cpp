@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:41:44 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/09 15:50:11 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/10 13:45:45 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ int main(void)
     while (1)
     {
         std::cout << "Input your command sir (ADD, SEARCH, EXIT)" << std::endl;
-        if (!std::getline(std::cin, command));
+        if (!std::getline(std::cin, command))
         {
             std::cout << "EOF Detected" << std::endl;
             exit(1);
         }
-        if (command.compare("add") == 0)
+        if (command.compare("ADD") == 0)
         {
             PhoneBook.add();   
         }
-        else if (command.compare("search") == 0)
+        else if (command.compare("SEARCH") == 0)
         {
             PhoneBook.search();
         }    
-        else if (command.compare("exit") == 0)
+        else if (command.compare("EXIT") == 0)
         {
-            exit(0);
+            return(0);
         }  
     }
 }

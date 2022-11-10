@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:42:27 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/09 23:32:00 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/10 13:40:10 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@
 //     PrintLine(darkest_secret_);   
         // }
 
-static std::string _checkLength(std::string str)
-{
+static std::string _checkLength(std::string str){
     if (str.length() < 10){
         return (str);
     }
@@ -73,11 +72,10 @@ static std::string _checkLength(std::string str)
     }
 }
 
-void    PhoneBook::displayPhoneBook(void)
-{
+void    PhoneBook::displayPhoneBook(void){
     for (int i = 0; i < this->getCnt(); i++){
         std::cout << std::setw(10);
-        std::cout << this->getIdx() << '|';
+        std::cout << i << '|';
         std::cout << std::setw(10);
         std::cout << _checkLength(this->contact_[i].getFirstName()) << '|';
         std::cout << std::setw(10);
@@ -88,8 +86,7 @@ void    PhoneBook::displayPhoneBook(void)
     }
 }
 
-void    PhoneBook::addContact(const std::string *strs, int idx)
-{
+void    PhoneBook::addContact(const std::string *strs, int idx){
     this->contact_[idx].setFirstName(strs[F_NAME]);
     this->contact_[idx].setLastName(strs[L_NAME]);
     this->contact_[idx].setNickName(strs[N_NAME]);
@@ -98,8 +95,7 @@ void    PhoneBook::addContact(const std::string *strs, int idx)
     return;
 }
 
-std::string    getlineWithNoEof(std::string& msg)
-{
+std::string    getlineWithNoEof(const std::string& msg){
     std::string str;
     
     do{
@@ -109,21 +105,22 @@ std::string    getlineWithNoEof(std::string& msg)
             std::clearerr(stdin);
             std::cout << "EOF : ERROR. Do it again" << std::endl;
         }
-    } while(!str.empty());
+    } while(str.empty());
     return (str);
 }
 
-static int isStrDigit(std::string& str)
-{
+static int isStrDigit(std::string& str){
     for (size_t len = 0; len < str.length(); len++){
         if (!std::isdigit(str.at(len)))
+        {
+            std::cout << "Not a number. Do it again" << std::endl;
             return (1);
-        return (0);
+        }
     }
+    return (0);
 }
 
-void PhoneBook::add(void)
-{
+void PhoneBook::add(void){
     std::string strs[5];
 
     strs[F_NAME] = getlineWithNoEof("What is First_name : ");
@@ -138,12 +135,35 @@ void PhoneBook::add(void)
     addContact(strs, this->idx_);
 }
 
-void PhoneBook::search(void)
-{
+int PhoneBook::searchByIndex(void){
+    std::string strIdx;
+    
+    do{
+        strIdx = getlineWithNoEof("Input index for search : ");
+    }while(isStrDigit(strIdx));
+    std::stringstream s(strIdx);
+    int i = 0;
+    s >> i;
+    if (i > this->getIdx() ){
+        std::cout << "Wrong Index. Do it again" << std::endl;
+        return (1);
+    }
+    std::cout << "Index: " << i << std::endl;
+	std::cout << "First name: " << this->contact_[i].getFirstName() << std::endl;
+	std::cout << "Last name: "  << this->contact_[i].getLastName() << std::endl;
+	std::cout << "Nickname: " << this->contact_[i].getNickName() << std::endl;
+	std::cout << "Phone number: " << this->contact_[i].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << this->contact_[i].getDarkestSecret() << std::endl;    
+    return (0);
+}
+
+void PhoneBook::search(void){
     if (!PhoneBook::getCnt()){
         std::cout << "You are not ready to search" << std::endl;
         return ;
     }
     displayPhoneBook();
-    
+    while(searchByIndex())
+        ;
+    return;        
 }

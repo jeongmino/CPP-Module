@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:32:40 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/09 23:08:36 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/10 13:34:51 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
-#include "Contact.hpp";
+#include "Contact.hpp"
 
 enum dataInfo {
     F_NAME,
@@ -37,7 +37,7 @@ class PhoneBook
         Contact contact_[8];
          
     public :
-        PhoneBook::PhoneBook();
+        PhoneBook();
         void    setIdx(int idx);
         void    setCnt(int cnt);
         int     getIdx(void);
@@ -45,8 +45,9 @@ class PhoneBook
         void    displayPhoneBook(void);
         void    addContact(const std::string *strs, int idx);
         void    add(void);
-        void    search(void);    
-        PhoneBook::~PhoneBook();  
+        void    search(void);
+        int    searchByIndex(void);    
+        ~PhoneBook();  
 };
 
 # endif

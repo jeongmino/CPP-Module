@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:36:09 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/09 22:56:54 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/10 13:11:56 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,12 @@ std::string Contact::getPhoneNumber(void){
 
 std::string Contact::getDarkestSecret(void){
     return (this->darkest_secret_);
+}
+
+Contact::Contact()
+{
+}
+
+Contact::~Contact()
+{
 }
