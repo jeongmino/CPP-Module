@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:41:52 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/11 16:24:53 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/12 15:22:37 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ int main(int argc, char *argv[])
     std::string line;
     std::ofstream outFile;
     std::getline(inFile, line, '\0');
+	if (!line.compare("")){
+		std::cout << "Empty Line" << std::endl;
+		return (1);
+	}
     replaceString(line, std::string(argv[2]), std::string(argv[3]));
     outFile.open(std::string(argv[1]) + ".replace");
     outFile << line;
