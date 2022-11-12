@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:41:44 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/10 13:45:45 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/11 14:39:43 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int main(void)
 {
     PhoneBook PhoneBook;
     std::string command;
-    int i = 0;
     
     while (1)
     {

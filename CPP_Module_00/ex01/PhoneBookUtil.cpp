@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 22:45:02 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/09 23:03:27 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/11 15:09:38 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int PhoneBook::getCnt(void){
 
 PhoneBook::~PhoneBook()
 {
-    std::cout << "\n@@@@ PhoneBook Service is Over@@@@" << std::endl;
+    std::cout << "\n@@@@ PhoneBook Service is Over@@@@\n" << std::endl;
 }

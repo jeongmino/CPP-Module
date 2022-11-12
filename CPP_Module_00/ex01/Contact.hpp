@@ -6,25 +6,14 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:36:21 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/10 13:06:15 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/11 15:10:18 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-
-#include <iomanip>
 #include <iostream>
-
-
-// enum dataInfo {
-//     F_NAME,
-//     L_NAME,
-//     N_NAME,
-//     P_NUM,
-//     D_SECRET
-// };
 
 class Contact{
     private :

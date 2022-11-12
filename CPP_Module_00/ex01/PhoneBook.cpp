@@ -6,65 +6,15 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:42:27 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/10 13:40:10 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/11 15:08:50 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include <string.h>
-#include <iostream>
-
- 
-// void PhoneBook::PrintBook(void) const
-// {
-//     std::cout << "first_name" << first_name_ << std::endl;
-//     std::cout << "last_name" << last_name_ << std::endl;
-//     std::cout << "nick_name" << nick_name_ << std::endl;
-//     std::cout << "phone_number" << phone_number_ << std::endl;
-//     std::cout << "secret" << darkest_secret_ << std::endl;
-// }
-
-// void PhoneBook::InputBook (int i)
-// {
-//     idx_ = i;
-    
-//     std::cout << "First_name : ";
-//     std::getline(std::cin, first_name_);
-//     std::cout << "Last_name : ";
-//     std::getline(std::cin, last_name_);
-//     std::cout << "nick_name : ";
-//     std::getline(std::cin, nick_name_);
-//     std::cout << "Phone_number : ";
-//     std::getline(std::cin, phone_number_);
-//     std::cout << "Darkest_secret : ";
-//     std::getline(std::cin, darkest_secret_);
-// }
-
-// void PhoneBook::PrintLine(std::string str) const
-// {
-//     if (str.length() <= 10)
-//         std::cout << std::right << std::setw(10) << str;
-//     else
-//     {
-//         str = str.substr(0, 9) + '.';
-//         std::cout << std::right << std::setw(10) << str;
-//     }
-//     std::cout << '|';
-// }
-
-// void PhoneBook::PrintPage(int i) const
-// {
-//     PrintLine(std::to_string(i));
-//     PrintLine(first_name_);
-//     PrintLine(last_name_);
-//     PrintLine(nick_name_);
-//     PrintLine(phone_number_);
-//     PrintLine(darkest_secret_);   
-        // }
 
 static std::string _checkLength(std::string str){
-    if (str.length() < 10){
+    if (str.length() <= 10){
         return (str);
     }
     else{
@@ -72,7 +22,20 @@ static std::string _checkLength(std::string str){
     }
 }
 
+static void displayInfo(void){
+    std::cout << std::setw(10);
+    std::cout << "Index" << '|';
+    std::cout << std::setw(10);
+    std::cout << "FirstName" << '|';
+    std::cout << std::setw(10);
+    std::cout << "LastName" << '|';
+    std::cout << std::setw(10);
+    std::cout << "NickName" << '|';
+    std::cout << std::endl;
+}
+
 void    PhoneBook::displayPhoneBook(void){
+    displayInfo();
     for (int i = 0; i < this->getCnt(); i++){
         std::cout << std::setw(10);
         std::cout << i << '|';
@@ -130,8 +93,8 @@ void PhoneBook::add(void){
         strs[P_NUM] = getlineWithNoEof("What is your phone_number : ");
     }while (isStrDigit(strs[P_NUM]));
     strs[D_SECRET] = getlineWithNoEof("What is your Darkest_secret : ");
-    this->idx_ = ++this->idx_ % 8;
-    this->cnt_ += this->cnt_ < 8;
+    this->setIdx((this->getIdx() + 1) % 8);
+    this->setCnt(this->getCnt() + (this->getCnt() < 8));
     addContact(strs, this->idx_);
 }
 
@@ -144,7 +107,7 @@ int PhoneBook::searchByIndex(void){
     std::stringstream s(strIdx);
     int i = 0;
     s >> i;
-    if (i > this->getIdx() ){
+    if (i >= this->getCnt() ){
         std::cout << "Wrong Index. Do it again" << std::endl;
         return (1);
     }
@@ -153,7 +116,7 @@ int PhoneBook::searchByIndex(void){
 	std::cout << "Last name: "  << this->contact_[i].getLastName() << std::endl;
 	std::cout << "Nickname: " << this->contact_[i].getNickName() << std::endl;
 	std::cout << "Phone number: " << this->contact_[i].getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret: " << this->contact_[i].getDarkestSecret() << std::endl;    
+	std::cout << "Darkest secret: " << this->contact_[i].getDarkestSecret() << std::endl;
     return (0);
 }
 
