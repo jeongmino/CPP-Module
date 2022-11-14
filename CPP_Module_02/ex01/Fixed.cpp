@@ -6,11 +6,13 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:30:47 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/12 18:04:29 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/13 23:47:30 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::fractionBitNum_ = 8;
 
 Fixed::Fixed(void)
     : fixed_point_(0)
@@ -18,7 +20,19 @@ Fixed::Fixed(void)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& copy)
+Fixed::Fixed(int const i)
+{
+    std::cout << "Int constructor called" << std::endl;
+    this->fixed_point_ = i << this->getFractionBitNum();
+}
+
+Fixed::Fixed(float const f)
+{
+    std::cout << "Float constructor called" << std::endl;
+    this->fixed_point_ = roundf(f * (1 << this->getFractionBitNum()));
+}
+
+Fixed::Fixed(Fixed& const copy)
 {
     std::cout << "Copy constructor called" << std::endl;
     *this = copy;
@@ -41,7 +55,7 @@ int Fixed::getFractionBitNum(void) const
     return fractionBitNum_;
 }
 
-Fixed& Fixed::operator=(const Fixed& src)
+Fixed& Fixed::operator=(Fixed& const src)
 {
     std::cout << "Copy Assignation operator called" << std::endl;
     if (this != &src)
@@ -49,18 +63,21 @@ Fixed& Fixed::operator=(const Fixed& src)
     return *this;            
 }
 
-int Fixed::toInt(const float& f)
+int Fixed::toInt(void) const
 {
-    this->setRawBits(this->getRawBits() << this->getFractionBitNum());
-    return this->getRawBits();
+    return this->fixed_point_ >> Fixed::fractionBitNum_;
 }
 
-float Fixed::toFloat(const int& i)
+float Fixed::toFloat(void) const
 {
-    return static_cast<float>(this->fixed_point_) / (1 << this->getFractionBitNum());
+    return static_cast<float>(this->fixed_point_) / static_cast<float>(1 << Fixed::fractionBitNum_);
 }
 
-Fixed& Fixed::operator<<()
+std::ostream &operator<<(std::ostream& os, Fixed const &fixed)
+{
+    os << fixed.toFloat();
+    return os;
+}
 
 Fixed::~Fixed()
 {
