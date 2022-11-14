@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:25:08 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/13 23:47:53 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/14 16:21:55 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Fixed{
         Fixed(void);
         Fixed(int const i);
         Fixed(float const f);
-        Fixed(Fixed& const copy);
-        Fixed& operator=(Fixed& const src);
+        Fixed(const Fixed& copy);
+        Fixed& operator=(const Fixed& src);
         ~Fixed();
 
         int getRawBits(void) const;

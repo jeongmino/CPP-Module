@@ -6,12 +6,13 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:49:00 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/12 21:49:35 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/14 16:21:51 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Fixed.hpp"
+#include <iostream>
 
 int main( void ) {
     Fixed a;

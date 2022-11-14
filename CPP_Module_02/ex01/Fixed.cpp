@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:30:47 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/13 23:47:30 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/14 16:22:23 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Fixed::Fixed(float const f)
     this->fixed_point_ = roundf(f * (1 << this->getFractionBitNum()));
 }
 
-Fixed::Fixed(Fixed& const copy)
+Fixed::Fixed(const Fixed& copy)
 {
     std::cout << "Copy constructor called" << std::endl;
     *this = copy;
@@ -55,7 +55,7 @@ int Fixed::getFractionBitNum(void) const
     return fractionBitNum_;
 }
 
-Fixed& Fixed::operator=(Fixed& const src)
+Fixed& Fixed::operator=(const Fixed& src)
 {
     std::cout << "Copy Assignation operator called" << std::endl;
     if (this != &src)
