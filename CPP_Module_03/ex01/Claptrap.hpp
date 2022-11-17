@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:09:44 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/17 16:18:29 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/17 21:29:09 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 #include <iostream>
 
-class Claptrap{
-    
-    private :
-        std::string name_;    
+class ClapTrap{
+
+    protected :
+        std::string name_;
         int hit_point_;
         int energe_point_;
         int attack_damage_;
+        
     public :
-        Claptrap(std::string name);
-        Claptrap(const Claptrap& copy);
-        Claptrap& operator=(const Claptrap& other);
-        ~Claptrap();
+        ClapTrap(std::string name);
+        ClapTrap(const ClapTrap& copy);
+        ClapTrap& operator=(const ClapTrap& other);
+        ~ClapTrap();
 
     /********* Required function **********/
         void    attack(const std::string& target);
@@ -38,15 +39,15 @@ class Claptrap{
     int         getHitPoint(void) const;
     int         getEnergyPoint(void) const;
     int         getAttackDamage(void) const;
-    
+
     /********* Setter function **********/
     void        setName(const std::string name);
     void        setHitPoint(int hit_point);
     void        setEnergyPoint(int energy_point);
     void        setAttackDamage(int attack_damage);
-    
+
 };
 
-std::ostream& operator<<(std::ostream& os, const Claptrap& clap);
+std::ostream& operator<<(std::ostream& os, const ClapTrap& clap);
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:07:37 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/17 16:21:04 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/17 20:53:47 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Claptrap.hpp"
+#include "ClapTrap.hpp"
 
-Claptrap::Claptrap(const std::string name) : name_(name),
+ClapTrap::ClapTrap(const std::string name) : name_(name),
                                              hit_point_(10),
                                              energe_point_(10),
                                              attack_damage_(0)
@@ -21,54 +21,54 @@ Claptrap::Claptrap(const std::string name) : name_(name),
     std::cout << *this << std::endl;
 }
 
-Claptrap::Claptrap(const Claptrap& copy)
+ClapTrap::ClapTrap(const Claptrap& copy)
 {
     std::cout << "copy constructor is called" << std::endl;
     *this = copy;
     std::cout << *this << std::endl;
 }
 
-std::string Claptrap::getName(void) const
+std::string ClapTrap::getName(void) const
 {
     return (this->name_);
 }
 
-int Claptrap::getAttackDamage(void) const
+int ClapTrap::getAttackDamage(void) const
 {
     return (this->attack_damage_);
 }
 
-int Claptrap::getEnergyPoint(void) const
+int ClapTrap::getEnergyPoint(void) const
 {
     return (this->energe_point_);
 }
 
-int Claptrap::getHitPoint(void) const
+int ClapTrap::getHitPoint(void) const
 {
     return (this->hit_point_);
 }
 
-void Claptrap::setName(const std::string name)
+void ClapTrap::setName(const std::string name)
 {
     this->name_ = name;
 }
 
-void Claptrap::setHitPoint(int hit_point)
+void ClapTrap::setHitPoint(int hit_point)
 {
-    this->hit_point_ = hit_point;    
+    this->hit_point_ = hit_point;
 }
 
-void Claptrap::setEnergyPoint(int energy_point)
+void ClapTrap::setEnergyPoint(int energy_point)
 {
     this->energe_point_ = energy_point;
 }
 
-void Claptrap::setAttackDamage(int attack_damage)
+void ClapTrap::setAttackDamage(int attack_damage)
 {
     this->attack_damage_ = attack_damage;
 }
 
-Claptrap& Claptrap::operator=(const Claptrap& other)
+ClapTrap& ClapTrap::operator=(const Claptrap& other)
 {
     if (this != &other)
     {
@@ -80,7 +80,7 @@ Claptrap& Claptrap::operator=(const Claptrap& other)
     return (*this);
 }
 
-void    Claptrap::attack(const std::string& target)
+void    ClapTrap::attack(const std::string& target)
 {
     if (this->energe_point_ > 0)
     {
@@ -94,7 +94,7 @@ void    Claptrap::attack(const std::string& target)
     return ;
 }
 
-void    Claptrap::takeDamage(unsigned int amount)
+void    ClapTrap::takeDamage(unsigned int amount)
 {
     unsigned int origin = amount;
     if (this->hit_point_ < (int)amount)
@@ -108,19 +108,18 @@ void    Claptrap::takeDamage(unsigned int amount)
     return ;
 }
 
-void    Claptrap::beRepaired(unsigned int amount)
+void    ClapTrap::beRepaired(unsigned int amount)
 {
     unsigned int origin = amount;
     if (this->hit_point_ + (int)amount > 10)
         amount = 10 - hit_point_;
     this->hit_point_ += amount;
-    std::cout << this->name_ << " is repaired " 
+    std::cout << this->name_ << " is repaired "
               << origin << " of hit point.";
      if (origin > amount)
         std::cout << " But max healing was " << amount;
     std::cout << std::endl;
-    return ; 
-        
+    return ;
 }
 
 std::ostream& operator<<(std::ostream& os, const Claptrap& clap)
@@ -132,7 +131,7 @@ std::ostream& operator<<(std::ostream& os, const Claptrap& clap)
     return (os);
 }
 
-Claptrap::~Claptrap()
+ClapTrap::~ClapTrap()
 {
     std::cout << "Claptrap destructor is called" << std::endl;
 }
