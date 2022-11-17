@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 23:42:54 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/14 18:58:13 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/17 12:34:49 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Fixed{
     public :
         Fixed();
         Fixed& operator=(const Fixed& other);    
-        Fixed(Fixed& const copy);
+        Fixed(const Fixed& copy);
         Fixed(int const i);
         Fixed(float const f );
         ~Fixed();
@@ -42,19 +42,21 @@ class Fixed{
         bool operator==(const Fixed& other) const;
         bool operator!=(const Fixed& other) const;
 
-        Fixed& operator+(const Fixed& other);
-        Fixed& operator-(const Fixed& other);
-        Fixed& operator*(const Fixed& other);
-        Fixed& operator/(const Fixed& other);
+        Fixed operator+(const Fixed& other);
+        Fixed operator-(const Fixed& other);
+        Fixed operator*(const Fixed& other);
+        Fixed operator/(const Fixed& other);
         
         Fixed& operator++();
-        Fixed& operator++(int dumy);
+        Fixed operator++(int dumy);
         Fixed& operator--();
-        Fixed& operator--(int dumy);
+        Fixed operator--(int dumy);
 
-        static const Fixed& min(const Fixed& a, const Fixed& b) 
+        static const Fixed& min(const Fixed& a, const Fixed& b);
+        static Fixed& min(Fixed& a, Fixed& b);
+        static const Fixed& max(const Fixed& a, const Fixed& b);
+        static Fixed& max(Fixed& a, Fixed& b);
 };
-    std::ostream& operator<<(std::ostream& os, Fixed& value);
-    
+    std::ostream& operator<<(std::ostream& os, const Fixed& value);
 
 #endif
