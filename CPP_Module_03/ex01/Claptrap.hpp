@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:09:44 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/17 16:45:41 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/17 16:18:29 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-class ClapTrap{
+class Claptrap{
     
     private :
         std::string name_;    
