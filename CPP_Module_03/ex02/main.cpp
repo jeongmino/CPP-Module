@@ -6,37 +6,37 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:07:37 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 11:45:13 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/18 12:41:47 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
     ClapTrap ironMan("IronMan");
     ClapTrap batMan("BatMan");
-    ScavTrap spiderMan("SpiderMan");
+    FragTrap thor("Thor");
     
     
     ironMan.setAttackDamage(7);
     batMan.setAttackDamage(7);
 
     ironMan.attack("SpiderMan");
-    spiderMan.takeDamage(ironMan.getAttackDamage());
+    thor.takeDamage(ironMan.getAttackDamage());
 
     batMan.attack("SpiderMan");
-    spiderMan.takeDamage(batMan.getAttackDamage());
+    thor.takeDamage(batMan.getAttackDamage());
 
-    std::cout <<spiderMan << std::endl;
+    std::cout << thor << std::endl;
 
-    spiderMan.guardGate();
+    thor.highFivesGuys();
 
-    spiderMan.attack("batMan");
-    batMan.takeDamage(spiderMan.getAttackDamage());
+    thor.attack("batMan");
+    batMan.takeDamage(thor.getAttackDamage());
 
-    spiderMan.attack("IronMan");
-    ironMan.takeDamage(spiderMan.getAttackDamage());
+    thor.attack("IronMan");
+    ironMan.takeDamage(thor.getAttackDamage());
 
-    std::cout << ironMan << std::endl << batMan << std::endl << spiderMan << std::endl;
+    std::cout << ironMan << std::endl << batMan << std::endl << thor << std::endl;
 }

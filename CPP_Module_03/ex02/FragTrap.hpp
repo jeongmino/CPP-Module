@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:00:21 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 11:32:04 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/18 12:06:56 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
     public :
-        ScavTrap(const std::string& name);
-        ScavTrap(const ScavTrap& copy);
-        ScavTrap& operator=(const ScavTrap& other);
-        ~ScavTrap();
+        FragTrap(const std::string& name);
+        FragTrap(const FragTrap& copy);
+        FragTrap& operator=(const FragTrap& other);
+        ~FragTrap();
         
-        void guardGate(void);       
+        void highFivesGuys(void);       
 };
 
-std::ostream& operator<<(std::ostream& os, const ScavTrap& scav);
+std::ostream& operator<<(std::ostream& os, const FragTrap& frag);
 #endif
