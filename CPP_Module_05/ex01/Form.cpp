@@ -6,34 +6,36 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 16:08:50 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 17:34:47 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/20 23:54:32 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 Form::Form(void) : name_("Defalut"),
-                   gradeToBeSigned_(gradeToBeSigned_),
-                   gradeToBeExecuted_(gradeToBeExecuted_)
+                   signed_(false),
+                   gradeToBeSigned_(60),
+                   gradeToBeExecuted_(40)
 {
-    this->signed_ = false;
     std::cout << "From constructor is called" << std::endl;
 }
 
 Form::Form(const std::string name, \
 const int gradeToBeSigned, const int gradeToBeExecuted) : name_(name),
+                                                          signed_(false),
                                                           gradeToBeSigned_(gradeToBeSigned),
-                                                          gradeToBeExecuted_(gradeToBeExecuted_)
+                                                          gradeToBeExecuted_(gradeToBeExecuted)
 {
-    this->signed_ = false;
     std::cout << "Form constructor is called" << std::endl;
 }
 
-Form::Form(const Form& copy)
+Form::Form(const Form& copy) : name_(copy.getName()),
+                               signed_(copy.getSigned()),
+                               gradeToBeSigned_(copy.getGradeToBeSigned()),
+                               gradeToBeExecuted_(copy.getGradeToBeExecuted())
 {
     std::cout << "Copy constructor is called" << std::endl;
     *this = copy;
-    this->signed_ = false;
 }
 
 Form& Form::operator=(const Form& other)

@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 13:22:38 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 17:04:55 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/20 23:40:12 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <exception>
 #include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
