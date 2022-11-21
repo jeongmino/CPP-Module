@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:30:42 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 16:11:59 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/21 13:15:19 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ HumanB::HumanB(std::string name){
 }
 
 void HumanB::attack(void){
+    if (this->weapon_ == NULL)
+    {
+        std::cout << "No weapons here" << std::endl;
+        return ;
+    }
     std::cout << this->name_ << " attacks with " \
     << this->getWeapon()->getType() << std::endl;
 }

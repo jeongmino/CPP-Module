@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 16:08:50 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 23:54:32 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/21 14:58:47 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ int Form::getGradeToBeExecuted(void) const
 
 void Form::beSigned(Bureaucrat& b)
 {
-    if (this->gradeToBeSigned_ > b.getGrade())
+    if (this->gradeToBeSigned_ < b.getGrade())
+    {
+        b.signForm(*this);
         throw GradeTooLowException();
+    }
     this->signed_ = true;
     std::cout << b.getName() << " can sign the form." << std::endl;    
 }

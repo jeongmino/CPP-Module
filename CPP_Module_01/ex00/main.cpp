@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:58:11 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/10 14:54:40 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/21 10:57:11 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int main(void)
 {
+    std::cout << "\n@@@@@@@@@@@@@@@ Create @@@@@@@@@@@@@@@\n" << std::endl;
     Zombie justZombie("justZombie");
     Zombie* heapZombie = newZombie("heapZombie");
     
-    std::cout << "\n@@@@@@@@@@@@@@@ Creation @@@@@@@@@@@@@@@\n" << std::endl;
+    std::cout << "\n@@@@@@@@@@@@@@@ Announce @@@@@@@@@@@@@@@\n" << std::endl;
     heapZombie->announce();
     justZombie.announce();
     randomChump("ramdomZombie");

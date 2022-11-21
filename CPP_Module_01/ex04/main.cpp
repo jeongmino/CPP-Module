@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:41:52 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 16:21:20 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/21 13:21:05 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    replaceString(std::string& line, std::string s1, std::string s2){
 
 int main(int argc, char *argv[])
 {
-    if (argc != 4 || argv[2][0] == '\0' || argv[3][0] == '\0'){
+    if (argc != 4 || argv[2][0] == '\0'){
         std::cout << "Wrong argument!" << std::endl;
         return (1);
     }

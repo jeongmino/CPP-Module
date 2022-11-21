@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:30:42 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 16:13:40 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/21 13:17:32 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ std::string HumanA::getName(void) const{
 }
 
 void HumanA::setWeapon(Weapon& weapon){
-    this->weapon_ = &weapon;
+    this->weapon_ = weapon;
 }
 
-Weapon* HumanA::getWeapon(void) const{
+Weapon& HumanA::getWeapon(void) const{
     return (this->weapon_);
 }
 
-HumanA::HumanA(std::string name, Weapon& weapon){
-    this->name_ = name;
-    this->weapon_ = &weapon;
+HumanA::HumanA(std::string name, Weapon& weapon) : name_(name),
+                                                   weapon_(weapon)
+{
 }
 
 void HumanA::attack(void){
     std::cout << this->name_ << " attacks with " \
-    << this->getWeapon()->getType() << std::endl;
+    << this->getWeapon().getType() << std::endl;
 }
 
 HumanA::~HumanA(void)

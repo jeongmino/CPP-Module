@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:30:47 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/14 16:22:23 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/21 14:20:31 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Fixed::Fixed(int const i)
 Fixed::Fixed(float const f)
 {
     std::cout << "Float constructor called" << std::endl;
-    this->fixed_point_ = roundf(f * (1 << this->getFractionBitNum()));
+    this->fixed_point_ = roundf(f * (1 << Fixed::fractionBitNum_));
 }
 
 Fixed::Fixed(const Fixed& copy)
@@ -40,13 +40,11 @@ Fixed::Fixed(const Fixed& copy)
 
 void Fixed::setRawBits(const int raw)
 {
-    std::cout << "setRawBits member function called" << std::endl;
     this->fixed_point_ = raw;
 }
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return this->fixed_point_;
 }
 
@@ -70,7 +68,7 @@ int Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-    return static_cast<float>(this->fixed_point_) / static_cast<float>(1 << Fixed::fractionBitNum_);
+    return (float)(this->fixed_point_) / (1 << Fixed::fractionBitNum_);
 }
 
 std::ostream &operator<<(std::ostream& os, Fixed const &fixed)

@@ -6,7 +6,7 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
-#    Updated: 2022/11/17 16:17:56 by junoh            ###   ########.fr        #
+#    Updated: 2022/11/21 12:07:00 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEPS_DIR	:=	deps/
 SRCS		:=	$(wildcard *.cpp)
 OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 DEPS		:=	$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
-NAME		:=	ex00
+NAME		:=	ex02
 
 all : $(NAME)
 
