@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:06:32 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/22 15:18:26 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:25:27 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ std::string Dog::getType(void) const
 void Dog::makeSound(void) const
 {
     std::cout << "Bark! Bark!" << std::endl;
+}
+
+Brain* Dog::getBrain(void) const
+{
+    return (this->brain_);
 }
 
 Dog::~Dog(void)

@@ -6,18 +6,13 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:19:34 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 01:12:07 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:33:45 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Dog.hpp"
 #include "Cat.hpp"
-
-
-#include "Dog.hpp"
-#include "Cat.hpp"
-
 
 int main(void)
 {
