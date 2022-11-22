@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 21:22:10 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 01:01:09 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 15:18:33 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
  Cat::Cat(const Cat& copy)
  {
     std::cout << "copy constructor is called" << std::endl;
+    this->brain_ = NULL;
     *this = copy;
  }
 

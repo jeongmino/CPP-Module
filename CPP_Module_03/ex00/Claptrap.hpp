@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:09:44 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/17 20:54:34 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 13:50:25 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class ClapTrap{
         int energe_point_;
         int attack_damage_;
     public :
+        ClapTrap(void);
         ClapTrap(std::string name);
         ClapTrap(const ClapTrap& copy);
         ClapTrap& operator=(const ClapTrap& other);
@@ -47,6 +48,6 @@ class ClapTrap{
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Claptrap& clap);
+std::ostream& operator<<(std::ostream& os, const ClapTrap& clap);
 
 #endif

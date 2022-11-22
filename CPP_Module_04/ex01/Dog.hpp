@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:04:57 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 00:48:43 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:24:53 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Dog : public Animal
         std::string getType(void) const;
         ~Dog();
     public :
+        Brain* getBrain(void) const;
         void makeSound(void) const;    
 };
 

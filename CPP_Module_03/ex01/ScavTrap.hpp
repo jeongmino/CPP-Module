@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:00:21 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 11:32:04 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:02:28 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 class ScavTrap : public ClapTrap
 {
     public :
+        ScavTrap(void);
         ScavTrap(const std::string& name);
         ScavTrap(const ScavTrap& copy);
         ScavTrap& operator=(const ScavTrap& other);
         ~ScavTrap();
         
-        void guardGate(void);       
+    public : 
+        void attack(const std::string& target);
+        void guardGate(void);      
 };
 
 std::ostream& operator<<(std::ostream& os, const ScavTrap& scav);

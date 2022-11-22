@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 00:44:31 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 00:47:15 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:27:00 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ Brain& Brain::operator=(const Brain& other)
             this->ideas_[i] = other.ideas_[i];
     return (*this);
 }
+
+std::string Brain::getIdea(void) const
+{
+    return (this->ideas_[0]);    
+}
+
+void Brain::setIdea(std::string str)
+{
+    this->ideas_[0] = str;
+}
+
 
 Brain::~Brain()
 {

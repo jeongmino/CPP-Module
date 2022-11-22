@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 21:11:01 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 00:04:58 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:11:01 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Animal::Animal(void)
 {
     std::cout << "Animal constructor is called" << std::endl;
+    this->type_ = "Default";
 }
 
 Animal::Animal(const Animal& copy)

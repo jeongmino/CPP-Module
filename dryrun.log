@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/goinfre/junoh/CPP-Module'
+make: Leaving directory `/goinfre/junoh/CPP-Module'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

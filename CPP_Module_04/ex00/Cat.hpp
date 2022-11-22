@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 21:17:18 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/19 23:56:07 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:41:43 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 #include "Animal.hpp"
 
 class Cat : public Animal
-{
-
-    
-    
+{ 
     public :
         Cat(void);
         Cat(const Cat& copy);

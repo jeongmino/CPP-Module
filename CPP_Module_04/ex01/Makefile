@@ -6,7 +6,7 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
-#    Updated: 2022/11/20 01:04:43 by junoh            ###   ########.fr        #
+#    Updated: 2022/11/22 15:07:22 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: | fclean all
+re: 
+	make fclean 
+	make all
 
 .PHONY: all clean fclean re

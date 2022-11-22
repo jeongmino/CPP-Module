@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Scavtrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:13:22 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 11:51:32 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:30:15 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
         this->name_ = other.name_;
     }
     return (*this);
+}
+
+void ScavTrap::attack(const std::string& target)
+{
+    if (this->hit_point_ <= 0)
+    {
+        std::cout << this->name_ << " has no hit point.... Cannot attack " << std::endl;
+        return ;
+    }
+    if (this->energe_point_ > 0)
+    {
+        this->energe_point_ -= 1;
+        std::cout << this->name_ << " powerfully and strongly and fantasticly attacks "
+                  << target << " causing " << this->attack_damage_
+                  << " of hit damage" << std::endl;   
+    }
+    else
+        std::cout << this->name_ << " has not enough energy" << std::endl;
+    return ;
 }
 
 ScavTrap::~ScavTrap()

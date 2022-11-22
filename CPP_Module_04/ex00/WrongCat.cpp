@@ -38,7 +38,7 @@ std::string WrongCat::getType(void) const
 
 void WrongCat::makeSound(void) const
 {
-    std::cout << "What do WrongAnimals Say?" << std::endl;
+    std::cout << "What do WrongCat Say?" << std::endl;
 }
 
 WrongCat::~WrongCat()

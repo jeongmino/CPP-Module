@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:00:21 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 11:32:04 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:30:43 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ class ScavTrap : public ClapTrap
         ScavTrap(const ScavTrap& copy);
         ScavTrap& operator=(const ScavTrap& other);
         ~ScavTrap();
-        
+    
+    public :
+        void attack(const std::string& target);
         void guardGate(void);       
 };
 

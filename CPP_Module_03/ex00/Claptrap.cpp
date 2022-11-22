@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*   Claptrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:07:37 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/17 20:53:47 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:16:04 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(void) : name_("Default"),
+                           hit_point_(10),
+                           energe_point_(10),
+                           attack_damage_(0)
+{
+    std::cout << "Default ClapTrap constructor is called" << std::endl;
+    std::cout << *this << std::endl;
+}
 
 ClapTrap::ClapTrap(const std::string name) : name_(name),
                                              hit_point_(10),
                                              energe_point_(10),
                                              attack_damage_(0)
 {
-    std::cout << "Claptrap constructor is called" << std::endl;
+    std::cout << "ClapTrap constructor is called" << std::endl;
     std::cout << *this << std::endl;
 }
 
-ClapTrap::ClapTrap(const Claptrap& copy)
+ClapTrap::ClapTrap(const ClapTrap& copy)
 {
     std::cout << "copy constructor is called" << std::endl;
     *this = copy;
@@ -68,7 +77,7 @@ void ClapTrap::setAttackDamage(int attack_damage)
     this->attack_damage_ = attack_damage;
 }
 
-ClapTrap& ClapTrap::operator=(const Claptrap& other)
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
     if (this != &other)
     {
@@ -82,6 +91,11 @@ ClapTrap& ClapTrap::operator=(const Claptrap& other)
 
 void    ClapTrap::attack(const std::string& target)
 {
+    if (this->hit_point_ <= 0)
+    {
+        std::cout << this->name_ << " has no hit point.... Cannot attack " << std::endl;
+        return ;
+    }
     if (this->energe_point_ > 0)
     {
         this->energe_point_ -= 1;
@@ -89,7 +103,7 @@ void    ClapTrap::attack(const std::string& target)
                   << target << " causing " << this->attack_damage_
                   << " of hit damage" << std::endl;   
     }
-    else
+    else if (this->energe_point_ <= 0)
         std::cout << this->name_ << " has not enough energy" << std::endl;
     return ;
 }
@@ -122,7 +136,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
     return ;
 }
 
-std::ostream& operator<<(std::ostream& os, const Claptrap& clap)
+std::ostream& operator<<(std::ostream& os, const ClapTrap& clap)
 {
     os << "name : " << clap.getName() << ", "
        << "HP : " << clap.getHitPoint() << ", "
@@ -133,5 +147,5 @@ std::ostream& operator<<(std::ostream& os, const Claptrap& clap)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Claptrap destructor is called" << std::endl;
+    std::cout << "ClapTrap destructor is called" << std::endl;
 }

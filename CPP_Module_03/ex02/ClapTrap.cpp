@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:07:37 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 11:51:50 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:28:39 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) :  hit_point_(10),
+ClapTrap::ClapTrap(void) :  name_("Default"),
+                            hit_point_(10),
                             energe_point_(10),
                             attack_damage_(0)
 {
-    std::cout << "ClapTrap constructor " << this->name_ << " is called" << std::endl;
-    std::cout << *this << std::endl;
+    std::cout << "ClapTrap constructor is called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string name) : name_(name),
@@ -90,6 +90,11 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 
 void    ClapTrap::attack(const std::string& target)
 {
+    if (this->hit_point_ <= 0)
+    {
+        std::cout << this->name_ << " has no hit point.... Cannot attack " << std::endl;
+        return ;
+    }
     if (this->energe_point_ > 0)
     {
         this->energe_point_ -= 1;

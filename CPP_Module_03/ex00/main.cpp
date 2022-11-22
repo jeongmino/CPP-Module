@@ -6,16 +6,16 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:07:37 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/17 16:19:47 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 14:16:45 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Claptrap.hpp"
+#include "ClapTrap.hpp"
 
 int main(void)
 {
-    Claptrap ironMan("IronMan");
-    Claptrap batMan("BatMan");
+    ClapTrap ironMan("IronMan");
+    ClapTrap batMan("BatMan");
 
     ironMan.setAttackDamage(7);
     batMan.setAttackDamage(7);
@@ -36,7 +36,6 @@ int main(void)
     batMan.takeDamage(ironMan.getAttackDamage());
 
     batMan.attack("IronMan");
-    ironMan.takeDamage(batMan.getAttackDamage());
-
+    
     std::cout << ironMan << std::endl << batMan << std::endl;
 }

@@ -6,18 +6,19 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:00:21 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/18 12:14:42 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/22 16:07:22 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(const std::string& name) : ClapTrap(name)
+FragTrap::FragTrap(const std::string& name)
 {
-    std::cout << "FragTrap constructor " << this->name_ << " is called" << std::endl;
+    this->name_ = name;
     this->hit_point_ = 100;
     this->energe_point_ = 100;
     this->attack_damage_ = 30;
+    std::cout << "FragTrap constructor " << this->name_ << " is called" << std::endl;
     std::cout << *this << std::endl;  
 }
 
