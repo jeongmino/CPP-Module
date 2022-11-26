@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 16:08:50 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/21 14:58:47 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 16:29:28 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,12 @@ void Form::beSigned(Bureaucrat& b)
 
 const char* Form::GradeTooLowException::what(void) const throw()
 {
-    return ("Grade is too Low to be sign the form");
+    return ("Grade is too Low to sign the form");
+}
+
+const char* Form::NoExecutableException::what(void) const throw()
+{
+    return ("Grade is too Low to execute the form");
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& f)
