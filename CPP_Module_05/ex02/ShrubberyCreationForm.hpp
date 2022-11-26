@@ -14,6 +14,8 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include "Form.hpp"
+#include <fstream>
+#include <sstream>
 
 class ShrubberyCreationForm : public Form
 {
@@ -24,10 +26,18 @@ class ShrubberyCreationForm : public Form
         ShrubberyCreationForm(void);
         ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(const ShrubberyCreationForm& copy);
-        ShrubberyCreationForm &operator=(const ShrubberyCreationForm& other);
-        ~ShrubberyCreationForm(void);
+        ShrubberyCreationForm &operator=(const ShrubberyCreationForm& other);        ~ShrubberyCreationForm(void);
     public :
-        void execute(Bureaucrat& const executer) const;
+        std::string getTarget(void) const;
+    
+    public :
+        void execute(Bureaucrat& const executor) const;
+    class ReadfileExecption : public std::exception
+    {
+        virtual const char* what(void) const throw();
+    };
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& f);
 
 #endif 

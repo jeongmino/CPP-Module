@@ -39,12 +39,17 @@ class Form
         bool getSigned(void) const;
         int getGradeToBeSigned(void) const;
         int getGradeToBeExecuted(void) const;
+        void setName(const std::string name);
         
     public :
         void beSigned(Bureaucrat& b);
         virtual void execute(Bureaucrat& const executer) const = 0;
  
     class GradeTooLowException : public std::exception
+    {
+        virtual const char* what(void) const throw();
+    };
+    class NoExecutableException : public std::exception
     {
         virtual const char* what(void) const throw();
     };
