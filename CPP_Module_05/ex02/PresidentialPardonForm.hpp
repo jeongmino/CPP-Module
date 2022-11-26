@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 17:11:57 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 17:11:57 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:13:05 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ class PresidentialPardonForm : public Form
     public :
         std::string getTarget(void) const;
     public :
-        void execute(Bureaucrat& const exector) const;
+        void execute(Bureaucrat const &exector) const;
 };
 
-std::ostream& operator<<(const std::ostream& os, const PresidentialPardonForm& f);
+std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& f);
 #endif

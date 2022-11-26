@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 13:22:38 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 23:40:12 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 17:33:53 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Bureaucrat
         void IncreasementGrade(void);
         void DecreasementGrade(void);
         void signForm(const Form& form) const;
+        void executeForm(Form const &form);
         
     class GradeTooHighException : public std::exception
     {

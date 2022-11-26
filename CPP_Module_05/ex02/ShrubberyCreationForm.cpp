@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 12:27:04 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 12:31:55 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:48:50 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,43 @@ const char* ShrubberyCreationForm::ReadfileExecption::what(void) const throw()
     return ("Read File Failure\n"); 
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat& const executor) const
+void randomLight(std::ofstream &file, char c)
+{
+    int t = rand() % 4;
+    
+    switch (t)
+    {
+        case 0:
+            file << PINK << c;
+            break;
+        case 1:
+            file << RED << c;
+            break;
+        case 2:
+            file << YELLOW << c;
+            break;
+        case 3:
+            file << PURPLE << c;
+            break;
+    }
+}
+
+void Colorring(std::string str, std::ofstream &file)
+{
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if (str[i] == 'O' || str[i] == 'o')
+            randomLight(file, str[i]);
+        else if (str[i] == '*')
+            file << GREEN << str[i];
+        else if (str[i] == '#')
+            file << BROWN << str[i];
+        else
+            file << str[i];
+    }
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (executor.getGrade() < this->getGradeToBeSigned())
     {
@@ -59,7 +95,8 @@ void ShrubberyCreationForm::execute(Bureaucrat& const executor) const
                 throw ReadfileExecption();                
             std::string tree;
             std::getline(infile, tree, '\0');
-            outfile << tree;
+            Colorring(tree, outfile);
+            // outfile << tree;
         }
         else 
             throw NoExecutableException();

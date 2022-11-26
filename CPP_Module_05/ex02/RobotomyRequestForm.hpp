@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 16:25:09 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 16:25:09 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:09:09 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ class RobotomyRequestForm : public Form
         RobotomyRequestForm(void);
         RobotomyRequestForm(std::string target);
         RobotomyRequestForm(const RobotomyRequestForm& copy);
-        RobotomyRequestForm &operator=(const RobotomyRequestForm& other);
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
         ~RobotomyRequestForm(void);
     
     public :
         std::string getTarget(void) const;
     public :
-        void execute(Bureaucrat& const executor) const;
+        void execute(Bureaucrat const &executor) const;
 };
+
+std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& f);
 
 #endif

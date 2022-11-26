@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 16:29:37 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 17:23:41 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:56:16 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void randomChoice(const RobotomyRequestForm& Robotmy)
 {
-    srand(time(0));
+    // srand(time(0));
     int num = rand();
 
     if (num % 2 == 0)
         std::cout << Robotmy.getName() << " is Robotmized...." << std::endl;
     else
         std::cout << Robotmy.getName() << " is not Robotmized" << std::endl;
+    return ;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat& const executor) const
+void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     std::cout << "Drrrriiillllinnnnngggggggg" << std::endl;
     if (executor.getGrade() < this->getGradeToBeSigned())
@@ -60,7 +61,7 @@ void RobotomyRequestForm::execute(Bureaucrat& const executor) const
     }
     else
         GradeTooLowException();
-
+    return;
 }
 
 std::string RobotomyRequestForm::getTarget(void) const

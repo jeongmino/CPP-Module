@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 16:08:50 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 16:29:28 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:07:11 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ const char* Form::NoExecutableException::what(void) const throw()
     return ("Grade is too Low to execute the form");
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& f)
-{
-    os << "Form name : " << f.getName() 
-       << " Form isSigned : " << f.getSigned()
-       << " Form gradeToBeSigned : " << f.getGradeToBeSigned()
-       << " Form gradeToBeExecuted : " << f.getGradeToBeExecuted() << std::endl;
-    return (os);       
-}
+// std::ostream& operator<<(std::ostream& os, const Form& f)
+// {
+//     os << "Form name : " << f.getName() 
+//        << " Form isSigned : " << f.getSigned()
+//        << " Form gradeToBeSigned : " << f.getGradeToBeSigned()
+//        << " Form gradeToBeExecuted : " << f.getGradeToBeExecuted() << std::endl;
+//     return (os);       
+// }
 
 Form::~Form()
 {

@@ -6,29 +6,49 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:05:13 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/21 14:56:55 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:56:33 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
     try{
-        Form form_1;
-        Form form_2("Form_2", 50, 10);
-        
-        Bureaucrat high("High_bureaucrat", 5);
-        Bureaucrat middle("Middle_bureaucrat", 25);
-        Bureaucrat low("Low_bureaucrat", 51);
+        Bureaucrat first("first", 1);
+        Bureaucrat notthing("notthing", 150);
 
-        form_1.beSigned(high);
-        form_1.beSigned(middle);
-        form_1.beSigned(low);
-        form_2.beSigned(high);
-        form_2.beSigned(middle);
-        form_2.beSigned(low);
+        ShrubberyCreationForm sh("Shrubbery");
+        RobotomyRequestForm ro("Robotomy");
+        PresidentialPardonForm pp("President");
+
+        std::cout << first << std::endl;
+        std::cout << notthing << std::endl;
+        std::cout << sh << std::endl;
+        std::cout << ro << std::endl;
+        std::cout << pp << std::endl;  
+
+        srand(time(0));
+
+        first.signForm(sh);
+        first.signForm(ro); 
+        first.signForm(pp);
+
+        first.executeForm(sh);
+        first.executeForm(ro);
+        first.executeForm(pp);
+
+        // notthing.signForm(sh);
+        // notthing.signForm(sh);
+        // notthing.signForm(sh);
         
+        // notthing.executeForm(sh);
+        // notthing.executeForm(ro);
+        // notthing.executeForm(pp);
+
     }
     catch(std::exception &e){
         std::cout << e.what() << std::endl;    

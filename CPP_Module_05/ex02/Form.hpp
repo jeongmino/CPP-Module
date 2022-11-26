@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 16:02:07 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 12:25:45 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 18:09:45 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Form
         
     public :
         void beSigned(Bureaucrat& b);
-        virtual void execute(Bureaucrat& const executer) const = 0;
+        virtual void execute(Bureaucrat const &executor) const = 0;
  
     class GradeTooLowException : public std::exception
     {
@@ -55,6 +55,6 @@ class Form
     };
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& f);
+// std::ostream& operator<<(std::ostream& os, const Form& f);
 
 #endif

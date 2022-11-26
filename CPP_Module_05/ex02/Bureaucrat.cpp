@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 13:42:45 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/26 12:00:42 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/26 17:58:55 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,21 @@ void Bureaucrat::signForm(const Form& form) const
     else
         std::cout << this->name_ << " couldn't sign " << form.getName() 
                   << " because grade of bureaucrat is too low." << std::endl;
+}
+
+void Bureaucrat::executeForm(Form const &form)
+{
+    if (this->grade_ <= form.getGradeToBeExecuted())
+    {
+        std::cout << this->name_ << " executed " << form.getName() << std::endl;
+        form.execute(*this);
+    }
+    else if (this->grade_ <= form.getGradeToBeSigned() && 
+                this->grade_ > form.getGradeToBeExecuted())
+        std::cout << this->name_ <<  "could sign but couldn't execute " << form.getName() << std::endl;
+    else if (this->grade_ > form.getGradeToBeSigned())
+        std::cout << this->name_ << " couldn't even sign " << form.getName() << std::endl;
+    return ;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
