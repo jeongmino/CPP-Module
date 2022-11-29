@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 14:40:38 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 15:44:04 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/29 14:09:16 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
         Bureaucrat human2("junoh", 23);
         Bureaucrat human3("one", 1);
         Bureaucrat human4("one-hundred-fifty", 150);
-        // Bureaucrat human5("fail", 151);    
+        Bureaucrat human5("fail", 151);    
     
         human1.IncreasementGrade();
         human2.DecreasementGrade();

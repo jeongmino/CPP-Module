@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 13:42:45 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/28 11:41:42 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/29 14:10:41 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ std::string Bureaucrat::getName(void) const
 int Bureaucrat::getGrade(void) const 
 {
     return (this->grade_);
+}
+
+void Bureaucrat::setGrade(int grade)
+{
+    this->grade_ = grade;
 }
 
 void Bureaucrat::IncreasementGrade(void)
