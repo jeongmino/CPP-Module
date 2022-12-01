@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 13:42:45 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/20 16:45:49 by junoh            ###   ########.fr       */
+/*   Updated: 2022/11/29 13:58:36 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int Bureaucrat::getGrade(void) const
     return (this->grade_);
 }
 
+void Bureaucrat::setGrade(int grade)
+{
+    this->grade_ = grade;
+}
+
 void Bureaucrat::IncreasementGrade(void)
 {
     if (this->grade_ == 1)
@@ -82,7 +87,7 @@ const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
-    os << bureaucrat.getName() << " bureaucrat grade " << bureaucrat.getGrade() 
+    os << bureaucrat.getName() << " bureaucrat grade : " << bureaucrat.getGrade() 
        << "." << std::endl;
     return os;
 }

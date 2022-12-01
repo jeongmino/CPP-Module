@@ -16,7 +16,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
-
+#include <exception>
 
 Base* generate(void)
 {
@@ -93,5 +93,26 @@ void identify(Base &p)
 int main(void)
 {
     srand(time(0));
-    
+    Base *b1;
+    Base *b2;
+    Base *b3;
+
+    try{
+        b1 = generate();
+        b2 = generate();
+        b3 = generate();
+
+        identify(b1);
+        identify(b2);
+        identify(b3);
+        std::cout << "Reference Identify" << std::endl;
+        identify(*b1);
+        identify(*b2);
+        identify(*b3);
+
+        delete b1;
+        delete b2;
+    }catch(std::bad_cast &e){
+        return ;
+    }
 }
