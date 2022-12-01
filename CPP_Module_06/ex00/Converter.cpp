@@ -16,18 +16,20 @@ Converter &Converter::operator=(const Converter &other)
 
 char Converter::toChar(double num)
 {
-	char value = static_cast<char>(num);
-	if (this->ft_is_inf(&num) || this->ft_is_nan(&num))
+	float	tmp = static_cast<float>(num);
+	if (this->ft_is_inf(tmp) || this->ft_is_nan(&num))
 		throw std::string("impossible");
-	else if (value < 32 || value > 126)
+	else if (num < 32 || num > 126)
 		throw std::string("Non displayable");
+	char value = static_cast<char>(num);
 	return (value);
 }
 
 int Converter::toInt(double num)
 {
+	float	tmp = static_cast<float>(num);
 	int i = static_cast<int>(num);
-	if (this->ft_is_inf(&num) || this->ft_is_nan(&num) || num > INT_MAX || num < INT_MIN)
+	if (this->ft_is_inf(tmp) || this->ft_is_nan(&num) || num > INT_MAX || num < INT_MIN)
 		throw std::string("impossible");
 	return (i);
 }
@@ -37,16 +39,11 @@ float Converter::toFloat(double num)
 	return (static_cast<float>(num));
 }
 
-double Converter::toDouble(double num)
+bool Converter::ft_is_inf(float &num)
 {
-	return (static_cast<double>(num));
-}
-
-bool Converter::ft_is_inf(double *num)
-{
-    if ((*(int *)(num) & 0x7f800000) == 0x7f800000)
+    if (num >= std::numeric_limits<int>::has_infinity)
         return (true);
-    if ((*(int *)(num) & 0xff800000) == 0xff800000)
+    if ((*(int *)(&num) & 0xff800000) == 0xff800000)
         return (true);
     return (false);
 }

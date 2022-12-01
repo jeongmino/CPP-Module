@@ -1,9 +1,5 @@
 #include "Converter.hpp"
 
-/* 
-	test cases: 420, -4.25, 42.0f, 0, 2147483649, nan, -inf, string
-*/
-
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -17,7 +13,8 @@ int main(int argc, char **argv)
 	
 	try
 	{
-		value = std::stod(argv[1]);
+		char	*end;
+		value = std::strtod(argv[1], &end);
 	}
 	catch (std::exception &e)
 	{
@@ -50,11 +47,15 @@ int main(int argc, char **argv)
 	else
 		std::cout << "float : " << f << ".0f" << std::endl;
 
-	double d = converter.toDouble(value);
-	if (d - static_cast<int>(d) != 0)
+	double d = value;
+	float	tmp = static_cast<float>(d);
+	if (converter.ft_is_inf(tmp))
+		std::cout << "double : " << value << std::endl;
+	else if (converter.ft_is_nan(&d))
 		std::cout << "double : " << d << std::endl;
-	else
+	else if (fabs(d - converter.toInt(d)) < std::numeric_limits<double>::epsilon())
 		std::cout << "double : " << d << ".0" << std::endl;
-
+	else if (value < 0 && fabs(d - converter.toInt(d)) < std::numeric_limits<double>::epsilon())
+		std::cout << "double : " << d << ".0" << std::endl;
 	return (0);
 }

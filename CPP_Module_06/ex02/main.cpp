@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:36:25 by junoh             #+#    #+#             */
-/*   Updated: 2022/11/28 19:50:40 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/01 20:48:24 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,17 @@ int main(void)
     Base *b2;
     Base *b3;
 
+    
     try{
         b1 = generate();
         b2 = generate();
         b3 = generate();
 
+
         identify(b1);
         identify(b2);
         identify(b3);
+
         std::cout << "Reference Identify" << std::endl;
         identify(*b1);
         identify(*b2);
@@ -112,7 +115,12 @@ int main(void)
 
         delete b1;
         delete b2;
+        delete b3;
+        
     }catch(std::bad_cast &e){
-        return ;
+        delete b1;
+        delete b2;
+        delete b3;
     }
+    return (0);
 }
