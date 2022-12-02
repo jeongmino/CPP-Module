@@ -1,4 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/03 00:25:43 by junoh             #+#    #+#             */
+/*   Updated: 2022/12/03 00:33:12 by junoh            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Converter.hpp"
+
+int isPrintableAscii(char *str)
+{
+    char c = *str;
+    if ((static_cast<int>(c) >= 32 && static_cast<int>(c) <= 47) ||
+        (static_cast<int>(c) >= 58 && static_cast<int>(c) <= 126))
+        return (0);
+    return (1);
+}
 
 int main(int argc, char **argv)
 {
@@ -10,11 +31,17 @@ int main(int argc, char **argv)
 
 	double value;
 	Converter converter;
-	
+	if (!isPrintableAscii(argv[1]))
+        value = static_cast<double>(argv[1][0]);
+    
 	try
 	{
+        if (!isPrintableAscii(argv[1]) && strlen(argv[1]) == 1)
+            value = static_cast<double>(argv[1][0]);
+        else{
 		char	*end;
 		value = std::strtod(argv[1], &end);
+        }
 	}
 	catch (std::exception &e)
 	{
@@ -47,15 +74,9 @@ int main(int argc, char **argv)
 	else
 		std::cout << "float : " << f << ".0f" << std::endl;
 
-	double d = value;
-	float	tmp = static_cast<float>(d);
-	if (converter.ft_is_inf(tmp))
+    if (value - static_cast<int>(value) != 0)
 		std::cout << "double : " << value << std::endl;
-	else if (converter.ft_is_nan(&d))
-		std::cout << "double : " << d << std::endl;
-	else if (fabs(d - converter.toInt(d)) < std::numeric_limits<double>::epsilon())
-		std::cout << "double : " << d << ".0" << std::endl;
-	else if (value < 0 && fabs(d - converter.toInt(d)) < std::numeric_limits<double>::epsilon())
-		std::cout << "double : " << d << ".0" << std::endl;
+	else
+		std::cout << "double : " << value << ".0" << std::endl;
 	return (0);
 }

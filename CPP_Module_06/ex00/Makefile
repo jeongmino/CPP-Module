@@ -6,40 +6,35 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
-#    Updated: 2022/11/28 16:35:15 by junoh            ###   ########.fr        #
+#    Updated: 2022/12/03 00:44:31 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
-RM			=	rm -rf
-
-OBJS_DIR	:=	objs/
-DEPS_DIR	:=	deps/
-
-SRCS		:=	$(wildcard *.cpp)
-OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
-DEPS		:=	$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
-NAME		:=	Converter
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+SRC_DIR = .
+NAME = Convert
+SRCS = ./main.cpp \
+	   ./Converter.cpp
+OBJS = $(SRCS:.cpp=.o)
+INCLUDE = .
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) -I $(INCLUDE) -o $@ $< 
 
-$(OBJS_DIR)%.o : %.cpp
-	@mkdir -p $(dir $@)
-	@mkdir -p $(DEPS_DIR)
-	$(CXX) $(CXXFLAGS) $< -c -o $@ -MMD
-	mv $(@:.o=.d) $(DEPS_DIR)
+$(NAME) : $(OBJS) 
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
 clean:
-	$(RM) $(OBJS_DIR)
-	$(RM) $(DEPS_DIR)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
-re: | fclean all
+re:
+	make fclean;
+	make all;
 
-.PHONY: all clean fclean re
+.PHONY: clean all fclean re

@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 12:00:40 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/01 12:48:22 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 01:00:11 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(void)
         std::cout << "\n************ floatArr ****************" << std::endl;
         stringArr[0] = "apple";
         stringArr[1] = "banana";
-        stringArr[3] = "asd";
+        // stringArr[3] = "asd";
         stringArr[2] = "grape";
         for (unsigned int i = 0; i < stringArr.size(); i++)
         {

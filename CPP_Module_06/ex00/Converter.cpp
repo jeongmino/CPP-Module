@@ -41,7 +41,7 @@ float Converter::toFloat(double num)
 
 bool Converter::ft_is_inf(float &num)
 {
-    if (num >= std::numeric_limits<int>::has_infinity)
+    if ((*(int *)(&num) & 0x7f800000) == 0x7f800000)
         return (true);
     if ((*(int *)(&num) & 0xff800000) == 0xff800000)
         return (true);

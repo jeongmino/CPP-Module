@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 11:17:09 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/01 11:21:42 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 00:55:26 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,4 @@ int main(void)
     iter(strArr, 6, Show);
     iter(doubleArr, 4, Show);   
 }
+
