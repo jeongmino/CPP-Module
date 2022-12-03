@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:32:48 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/03 11:34:04 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 20:37:51 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ public:
 	};
 	MutantStack& operator=(const MutantStack &other)
 	{
-		if (this != &source)
-		    std::stack<T>::operator=(source);
+		if (this != &other)
+		    std::stack<T>::operator=(other);
 		return (*this);
 	};
 	
@@ -57,6 +57,15 @@ public:
 	{
 		return (std::stack<T>::c.end());
 	}
+    class MutantException : public std::exception
+	{
+		public:
+			const char * what() const throw()
+            {
+                return ("Stack is weird!");
+            }
+	};
+
 };
 
 #endif

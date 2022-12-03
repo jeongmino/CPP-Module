@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 01:28:44 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/03 01:40:33 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 20:02:59 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ class NotFoundException : public std::exception
 };
 
 template <typename T>
-int easyFind(std::vector<T> &vector, T arg)
+int easyfind(std::vector<T> & vector , T arg)
 {
-    typename std::vector<T>::iterator it;
-    it = std::find(vector.begin(), vector.end(), arg);
-    if (it == vector.end())
-        throw (NotFoundException());
-    return (it - vector.begin());
-};
+	typename std::vector<T>::iterator findIt; // specify which iterator we'll use
+	findIt = std::find(vector.begin(), vector.end(), arg);
+	if (findIt == vector.end())
+		throw(NotFoundException());
+	return (findIt - vector.begin());
+}
 
 #endif

@@ -6,14 +6,14 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 01:39:47 by junoh             #+#    #+#              #
-#    Updated: 2022/12/03 11:30:55 by junoh            ###   ########.fr        #
+#    Updated: 2022/12/03 20:17:47 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = .
-NAME = ex00
+NAME = ex01
 SRCS = ./main.cpp ./Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 INCLUDE = .

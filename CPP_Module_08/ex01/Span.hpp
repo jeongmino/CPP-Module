@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:19:46 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/03 11:27:02 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 20:10:52 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ public:
         unsigned int getMax(void) const;
         std::vector<int> getStorage(void) const;
         
-    class AlreadyStoredElement: public std::exception
+    class ExistElement: public std::exception
 	{
 	public:
 		const char *what() const throw();
@@ -47,7 +47,7 @@ public:
 	{
 		const char *what() const throw();
 	};
-	class NotCompatiable: public std::exception
+	class OneElement: public std::exception
 	{
 		const char *what() const throw();
 	};
