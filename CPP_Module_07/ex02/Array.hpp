@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 11:40:58 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/01 12:42:25 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 16:56:13 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Array
 {
     private :
         T *array_;
-        unsigned n_;
+        unsigned int n_;
         
     public :
         Array(void) : n_(0)
@@ -29,50 +29,39 @@ class Array
             std::cout << "Array Default constructor is called" << std::endl;
             this->array_ = new T[0];
         }
-        Array(unsigned n) : n_(n)
+        Array(unsigned int n) : n_(n)
         {
             std::cout << "Array constructor is called" << std::endl;
             this->array_ = new T[this->n_];
         }
-        Array(const Array& copy)
+        Array(const Array& copy) : n_(0)
         {
             std::cout << "Array Copy constructor is called" << std::endl;
-            this->array_ = 0;
             *this = copy;
         }
         Array& operator=(const Array& other)
         {
             if (this != &other)
             {
-                if (this->array_)
-                    delete this->array_;
-                this->array_ = other.getArray();
-                this->n_ = other.getN();
-                for (unsigned i = 0; i < this->n_; i++)
-                    this->array_[i] = other.getArray()[i];
+                if (this->n_)
+                    delete[] this->array_;
+                    this->array_ = 0;
+            }
+            this->n_ = other.size();
+            this->array_ =  new T [this->n_];
+            for (unsigned int i = 0; i < this->n_; i++){
+                    this->array_[i] = other.array_[i];
             }
             return (*this);
-                
         }
         ~Array(void)
         {
             std::cout << "Array destructor is called" << std::endl;
             delete[] this->array_;
         };
-
-    public : 
-        T* getArray(void) const
-        {
-            return (this->array_);
-        };
         
-        unsigned getN(void) const
-        {
-            return (this->n_);
-        };
-
     public :
-        unsigned size(void)
+        unsigned int size(void) const
         {
             return (this->n_);
         };

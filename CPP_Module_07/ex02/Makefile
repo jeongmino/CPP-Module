@@ -6,7 +6,7 @@
 #    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
-#    Updated: 2022/12/03 00:58:07 by junoh            ###   ########.fr        #
+#    Updated: 2022/12/03 15:46:56 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ INCLUDE = .
 all : $(NAME)
 
 .cpp.o:
-	$(CXX) -c $(CXXFLAGS) -I $(INCLUDE) -o $@ $< -MMD
+	$(CXX) -c $(CXXFLAGS) -I $(INCLUDE) -o $@ $< -MMD -g
 
 $(NAME) : $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) -fsanitize=address -g
 
 clean:
 	rm -f $(OBJS) $(DEPS)

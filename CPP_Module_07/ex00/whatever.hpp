@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 00:31:58 by junoh             #+#    #+#             */
-/*   Updated: 2022/12/01 01:05:06 by junoh            ###   ########.fr       */
+/*   Updated: 2022/12/03 16:56:57 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,6 @@
 # define WHATEVER_HPP
 
 #include <iostream>
-
-// template<typename T>
-// void swap(T &a, T &b)
-// {
-//     T temp = a;
-//     std::cout << temp << std::endl;
-//     a = b;
-//     std::cout << a << " " << b << std::endl;
-//     b = temp;
-//     std::cout << b << std::endl;
-// }
-
-// template <typename T>
-// void	swap(T & num1, T & num2)
-// {
-// 	T	tmp;
-
-// 	tmp = num1;
-// 	num1 = num2;
-// 	num2 = tmp;
-// }
-
-// template<typename T>
-// void swap(T *a, T *b)
-// {
-//     T temp = *a;
-//     a = b;
-//     b = temp;
-// }
 
 template <typename T>
 void swap(T& n1, T& n2)
