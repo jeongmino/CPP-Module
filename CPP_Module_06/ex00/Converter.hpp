@@ -22,11 +22,6 @@
 class Converter
 {
     private :
-        // char c_;
-        // int i_;
-        // double d_;
-        // float f_;
-        // std::string str_;
 
     public:
 	    Converter(void);
