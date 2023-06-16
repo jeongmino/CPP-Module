@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:35:21 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/16 17:51:22 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/16 19:08:40 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int main(int argc, char *argv[])
         return(1);
     }
     
-    std::map<std::string, float> chart;
+    std::map<int, std::pair<std::string, float> > chart;
     checkBitcoinChart(std::string(argv[1]), chart);
 }
