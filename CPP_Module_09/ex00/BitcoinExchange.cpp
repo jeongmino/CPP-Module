@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/16 19:07:20 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/18 16:45:25 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void checkBitcoinChart(std::string filename, std::map<int, std::pair<std::string
     if (inFile.fail()){
         std::cout << "Could not open file" << std::endl;
         inFile.close();
-        return ;
+        exit(1);
     }
     readOneDay(inFile, chart);
     printAccount(chart);
