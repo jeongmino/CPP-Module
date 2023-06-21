@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/21 14:43:49 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:33:17 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,21 @@ BitcoinExchange::BitcoinExchange(void)
 {}
 
 BitcoinExchange::BitcoinExchange(const IntPairMap& Chart, const StringFloatMap& Account){
-    this->bitcoinChart = Chart;
-    this->bitcoinAccount = Account;
+    this->bitcoinChart_ = Chart;
+    this->bitcoinAccount_ = Account;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src){
+    if (this != &src){
+        this->bitcoinChart_ = src.bitcoinChart_;
+        this->bitcoinAccount_ = src.bitcoinAccount_;
+    }
+    return (*this);
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy){
+    std::cout << "copy constructor is called" << std::endl;
+    *this = copy;
 }
 
 
@@ -43,7 +56,7 @@ void printError(std::string reason){
     }
 } 
 
-/*
+
 static int leapYearCheck(int year){
     if (year == 2012 || year == 2016 || year == 2020){
         return 29;
@@ -94,21 +107,21 @@ static int checkDate(std::string date){
         std::cout << date << std::endl;
         return 0;
     }
-    // else{
-    //     checkCoin(coin);
-    // }
     return 1;
 }
 
-static void checkCoin(float coin){
+static int checkCoin(float coin){
     if (coin < 0){
         printError("Minus");
+        return 0;
     }
     else if (coin > 1000){
         printError("Too big");
+        return 0;
     }
+    return 1;
 }
-*/
+
 
 static void readOneDay(std::ifstream &file, IntPairMap &chart) {
 
@@ -118,6 +131,7 @@ static void readOneDay(std::ifstream &file, IntPairMap &chart) {
     float coin;
     int i = 0;
 
+    std::getline(file, line);
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::pair<std::string, float> pair;
@@ -144,6 +158,29 @@ void checkBitcoinChart(std::string filename, IntPairMap &chart){
     }
     readOneDay(inFile, chart);
     // printChart(chart);
+}
+
+void BitcoinExchange::showReceipt(void){
+    IntPairMap::iterator chartIt;
+    IntPairMap::iterator chartTmpIt;
+    StringFloatMap::iterator accountIt;
+
+    IntPairMap& chart = this->bitcoinChart_;
+    StringFloatMap& account = this->bitcoinAccount_;
+    chartTmpIt = chart.begin();
+    for(accountIt = account.begin(); accountIt != account.end(); accountIt++){
+        for(chartIt = chartTmpIt; chartIt != chart.end(); chartIt++){
+            if (chartIt->second.first != accountIt->first){
+                // std::cout << "chart: " << chartIt->second.first << " account: " << accountIt->first << std::endl;
+                chartTmpIt = chartIt;
+                break;
+            }
+            if (checkDate(accountIt->first) && checkCoin(chartIt->second.second)){
+                std::cout << accountIt->first << " => " <<  chartIt->second.second <<
+                " = " << chartIt->second.second * accountIt->second << std::endl;
+            }
+        }
+    }
 }
 
 BitcoinExchange::~BitcoinExchange(void)

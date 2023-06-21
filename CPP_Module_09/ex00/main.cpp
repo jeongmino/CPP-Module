@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:35:21 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/21 14:41:06 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:28:16 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,7 @@ int main(int argc, char *argv[])
     checkBitcoinChart(std::string(argv[1]), chart);
     csvParse(bitcoinAccount);
     BitcoinExchange Bitcoin(chart, bitcoinAccount);
+    std::cout << "??" << std::endl;
+    Bitcoin.showReceipt();
+    return 0;
 }
