@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:35:21 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/18 17:09:42 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:41:06 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ static void csvParse(std::map<std::string, float> &chart){
         std::getline(sline, price_str);
         float price = atof(price_str.c_str());
         chart.insert(std::make_pair(date, price));
-        // chart.insert(std::pair<std::string, int> oneDay(date, price));
     }
-    std::map<std::string, float>::iterator it;
-    for (it = chart.begin(); it != chart.end(); it++){
-        std::cout << it->first << " | " << it->second << std::endl;
-    }
+    // std::map<std::string, float>::iterator it;
+    // for (it = chart.begin(); it != chart.end(); it++){
+    //     std::cout << it->first << " | " << it->second << std::endl;
+    // }
 }
 
 int main(int argc, char *argv[])
@@ -47,8 +46,9 @@ int main(int argc, char *argv[])
         return(1);
     }
     
-    std::map<int, std::pair<std::string, float> > chart;
-    std::map<std::string, float> bitcoint_chart;
-    // checkBitcoinChart(std::string(argv[1]), chart);
-    csvParse(bitcoint_chart);
+    IntPairMap chart;
+    StringFloatMap bitcoinAccount;
+    checkBitcoinChart(std::string(argv[1]), chart);
+    csvParse(bitcoinAccount);
+    BitcoinExchange Bitcoin(chart, bitcoinAccount);
 }

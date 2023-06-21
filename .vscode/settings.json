@@ -58,6 +58,15 @@
         "fstream": "cpp",
         "iomanip": "cpp",
         "stack": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "__hash_table": "cpp",
+        "__node_handle": "cpp",
+        "__tree": "cpp",
+        "array": "cpp",
+        "complex": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "optional": "cpp",
+        "unordered_map": "cpp"
     }
 }

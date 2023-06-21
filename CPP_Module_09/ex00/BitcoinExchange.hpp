@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:24:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/18 16:45:55 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:42:24 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,20 @@
 #include <map>
 #include <utility>
 
+typedef std::map<int, std::pair<std::string, float> > IntPairMap;
+typedef std::map<std::string, float> StringFloatMap;
 class BitcoinExchange{
     private:
-        std::map<int, std::pair<std::string, float> > bitcoinChart;
-        std::map<int, std::pair<std::string, float> > bitcoinAccount;
+        IntPairMap bitcoinChart;
+        StringFloatMap bitcoinAccount;
 
     public:
-        void setBitcoinChart(const std::map<std::string, float>);
-        void setBitcoinAccount(const std::map<std::string, float>);
+        void setBitcoinChart(const StringFloatMap);
+        void setBitcoinAccount(const StringFloatMap);
 
     public:
         BitcoinExchange(void);
+        BitcoinExchange(const IntPairMap& Chart, const StringFloatMap& Account);
         BitcoinExchange(const BitcoinExchange& copy);
         BitcoinExchange& operator=(const BitcoinExchange& src); 
         ~BitcoinExchange();
@@ -39,6 +42,7 @@ class BitcoinExchange{
 
 std::ostream    &operator<<(std::ostream& os, BitcoinExchange const &BitcoinExchange);
 
-void checkBitcoinChart(std::string filename, std::map<int, std::pair<std::string, float> > &chart);
+void checkBitcoinChart(std::string filename, IntPairMap &chart);
 void printError(std::string reason);
+void printChart(IntPairMap chart);
 # endif

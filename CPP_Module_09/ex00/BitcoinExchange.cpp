@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/18 16:45:25 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:43:49 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 BitcoinExchange::BitcoinExchange(void)
 {}
 
-static void printAccount(std::map<int, std::pair<std::string, float> > chart){
-    std::map<int, std::pair<std::string, float> >::iterator it;
+BitcoinExchange::BitcoinExchange(const IntPairMap& Chart, const StringFloatMap& Account){
+    this->bitcoinChart = Chart;
+    this->bitcoinAccount = Account;
+}
+
+
+void printChart(IntPairMap chart){
+    IntPairMap::iterator it;
     for (it = chart.begin(); it != chart.end(); it++){
         if (it->second.second != -42)
             std::cout << it->second.first << " | " << it->second.second << std::endl;
@@ -104,7 +110,7 @@ static void checkCoin(float coin){
 }
 */
 
-static void readOneDay(std::ifstream &file, std::map<int, std::pair<std::string, float> > &chart) {
+static void readOneDay(std::ifstream &file, IntPairMap &chart) {
 
     std::string line;
     std::string date;
@@ -127,7 +133,7 @@ static void readOneDay(std::ifstream &file, std::map<int, std::pair<std::string,
 }
 
 
-void checkBitcoinChart(std::string filename, std::map<int, std::pair<std::string, float> > &chart){
+void checkBitcoinChart(std::string filename, IntPairMap &chart){
     std::ifstream inFile;
 
     inFile.open(filename);
@@ -137,7 +143,7 @@ void checkBitcoinChart(std::string filename, std::map<int, std::pair<std::string
         exit(1);
     }
     readOneDay(inFile, chart);
-    printAccount(chart);
+    // printChart(chart);
 }
 
 BitcoinExchange::~BitcoinExchange(void)
