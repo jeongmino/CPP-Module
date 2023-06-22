@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/21 16:33:17 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/22 16:08:17 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int checkDate(std::string date){
 
     std::istringstream(date) >> year >> dash >> month >> dash >> day;
 
-    if (year > 2022 || year < 2010 || month < 1 || month > 12 || !checkDay(leapYearCheck(year), month, day)){
+    if (year > 2022 || year < 2009 || month < 1 || month > 12 || !checkDay(leapYearCheck(year), month, day)){
         printError("Bad input");
         std::cout << date << std::endl;
         return 0;
@@ -131,7 +131,7 @@ static void readOneDay(std::ifstream &file, IntPairMap &chart) {
     float coin;
     int i = 0;
 
-    std::getline(file, line);
+    std::getline(file, line); 
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::pair<std::string, float> pair;
@@ -162,22 +162,31 @@ void checkBitcoinChart(std::string filename, IntPairMap &chart){
 
 void BitcoinExchange::showReceipt(void){
     IntPairMap::iterator chartIt;
-    IntPairMap::iterator chartTmpIt;
     StringFloatMap::iterator accountIt;
+    StringFloatMap::iterator accountTmpIt;
 
     IntPairMap& chart = this->bitcoinChart_;
     StringFloatMap& account = this->bitcoinAccount_;
-    chartTmpIt = chart.begin();
-    for(accountIt = account.begin(); accountIt != account.end(); accountIt++){
-        for(chartIt = chartTmpIt; chartIt != chart.end(); chartIt++){
-            if (chartIt->second.first != accountIt->first){
+    accountTmpIt = account.begin();
+    for(chartIt = chart.begin(); chartIt != chart.end(); chartIt++){
+        for(accountIt = accountTmpIt; accountIt != account.end(); accountIt++){
+            if (chartIt->second.first > accountIt->first){
                 // std::cout << "chart: " << chartIt->second.first << " account: " << accountIt->first << std::endl;
-                chartTmpIt = chartIt;
+                ;
+            }
+            else if (chartIt->second.first < accountIt->first){
+                printError("Bad input");
+                std::cout << chartIt->second.first << std::endl;
+                accountTmpIt = accountIt;
                 break;
             }
-            if (checkDate(accountIt->first) && checkCoin(chartIt->second.second)){
-                std::cout << accountIt->first << " => " <<  chartIt->second.second <<
-                " = " << chartIt->second.second * accountIt->second << std::endl;
+            else{
+                if (checkDate(accountIt->first) && checkCoin(chartIt->second.second)){
+                    std::cout << accountIt->first << " => " <<  chartIt->second.second <<
+                    " = " << chartIt->second.second * accountIt->second << std::endl;
+                }
+                accountTmpIt = accountIt;
+                break;
             }
         }
     }
