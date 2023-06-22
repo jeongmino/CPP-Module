@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/22 16:08:17 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 01:49:22 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,6 @@ void checkBitcoinChart(std::string filename, IntPairMap &chart){
         exit(1);
     }
     readOneDay(inFile, chart);
-    // printChart(chart);
 }
 
 void BitcoinExchange::showReceipt(void){
@@ -171,7 +170,6 @@ void BitcoinExchange::showReceipt(void){
     for(chartIt = chart.begin(); chartIt != chart.end(); chartIt++){
         for(accountIt = accountTmpIt; accountIt != account.end(); accountIt++){
             if (chartIt->second.first > accountIt->first){
-                // std::cout << "chart: " << chartIt->second.first << " account: " << accountIt->first << std::endl;
                 ;
             }
             else if (chartIt->second.first < accountIt->first){

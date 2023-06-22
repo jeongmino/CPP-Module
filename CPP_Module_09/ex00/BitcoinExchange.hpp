@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:24:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/21 16:26:27 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 01:49:46 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef std::map<int, std::pair<std::string, float> > IntPairMap;
 typedef std::map<std::string, float> StringFloatMap;
+
 class BitcoinExchange{
     private:
         IntPairMap bitcoinChart_;
