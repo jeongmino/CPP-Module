@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:24:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 01:49:46 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 17:38:26 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ class BitcoinExchange{
         ~BitcoinExchange();
     public:
         void showReceipt(void);
+        IntPairMap getBitcoinChart(void) const;
+        StringFloatMap getBitcoinAccount(void) const;
 };
 
 void checkBitcoinChart(std::string filename, IntPairMap &chart);

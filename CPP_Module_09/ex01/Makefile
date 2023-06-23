@@ -3,35 +3,43 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: junoh <junoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/03 01:39:47 by junoh             #+#    #+#              #
-#    Updated: 2022/12/03 11:35:10 by junoh            ###   ########.fr        #
+#    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
+#    Updated: 2023/06/23 18:02:20 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC_DIR = .
-NAME = ex00
-SRCS = ./main.cpp
-OBJS = $(SRCS:.cpp=.o)
-INCLUDE = .
+CXX			=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+RM			=	rm -rf
+
+OBJS_DIR	:=	objs/
+DEPS_DIR	:=	deps/
+
+SRCS		:=	$(wildcard *.cpp)
+OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
+DEPS		:=	$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
+NAME		:=	RPN
 
 all : $(NAME)
-		
-.cpp.o:
-	$(CXX) -c $(CXXFLAGS) -I $(INCLUDE) -o $@ $< 
 
-$(NAME) : $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(OBJS_DIR)%.o : %.cpp
+	@mkdir -p $(dir $@)
+	@mkdir -p $(DEPS_DIR)
+	$(CXX) $(CXXFLAGS) $< -c -o $@ -MMD
+	mv $(@:.o=.d) $(DEPS_DIR)
 
 clean:
-	rm -f $(OBJS) 
+	$(RM) $(OBJS_DIR)
+	$(RM) $(DEPS_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
-re:
-	make fclean;
-	make all;
+re: | fclean all
+
+.PHONY: all clean fclean re

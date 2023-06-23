@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 01:49:22 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 17:40:23 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src){
         this->bitcoinChart_ = src.bitcoinChart_;
         this->bitcoinAccount_ = src.bitcoinAccount_;
     }
-    return (*this);
+    return *this;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy){
@@ -33,6 +33,13 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy){
     *this = copy;
 }
 
+IntPairMap BitcoinExchange::getBitcoinChart(void) const {
+    return this->bitcoinChart_;
+}
+
+StringFloatMap BitcoinExchange::getBitcoinAccount(void) const {
+    return this->bitcoinAccount_;
+}
 
 void printChart(IntPairMap chart){
     IntPairMap::iterator it;
@@ -164,8 +171,8 @@ void BitcoinExchange::showReceipt(void){
     StringFloatMap::iterator accountIt;
     StringFloatMap::iterator accountTmpIt;
 
-    IntPairMap& chart = this->bitcoinChart_;
-    StringFloatMap& account = this->bitcoinAccount_;
+    IntPairMap chart = getBitcoinChart();
+    StringFloatMap account = getBitcoinAccount();
     accountTmpIt = account.begin();
     for(chartIt = chart.begin(); chartIt != chart.end(); chartIt++){
         for(accountIt = accountTmpIt; accountIt != account.end(); accountIt++){
