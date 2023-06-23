@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:46:45 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 18:38:31 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 18:44:39 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,33 @@ int isVaildOperation(char c){
 int calculateNum(RPN& stack ,std::deque<char>& buffer){
     int firstOp;
     int secondOp;
+    int ret;
+    char op;
 
+    op = getOperation(buffer);
     firstOp = getValue(stack);
     secondOp = getValue(stack);
-    
+
+    switch (op)
+    {
+        case "+":
+            ret = firstOp + secondOp;
+            break;
+        case "-":
+            ret = firstOp - secondOp;
+            break;
+        case "*":
+            ret = firstOp * secondOp;
+            break;
+        case "/":
+            if (secondOp == 0){
+                std::cout << "Error: the second Operand is zero" << std::endl;
+                exit(1);
+            }
+            ret = firstOp / secondOp;
+            break;
+    }
+    return ret;
 }
 
 int getNum(RPN& stack){
@@ -67,6 +90,16 @@ int getNum(RPN& stack){
     return ret;
 }
 
-int getOperation(std::deque<char>& buffer{
-    if 
+char getOperation(std::deque<char>& buffer){
+    char ret;
+    
+    if (!buffer.empty()){
+        ret = buffer.front();
+        buffer.pop_front();
+    }
+      else{
+        std::cout << "Error" << std::endl;
+        exit(1);
+    }
+    return ret;
 }
