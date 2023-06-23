@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:46:45 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 18:44:39 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 21:27:46 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int isVaildNum(char c){
     }
     int num = static_cast<int>(c);
     if (num < 0 || num > 10){
-        std::cout << "Error" << std::endl;
+        std::cout << "Error: out of range: " << num <<  std::endl;
         exit(1);
     }
     return 1;
@@ -51,21 +51,21 @@ int calculateNum(RPN& stack ,std::deque<char>& buffer){
     char op;
 
     op = getOperation(buffer);
-    firstOp = getValue(stack);
-    secondOp = getValue(stack);
+    secondOp = getNum(stack);
+    firstOp = getNum(stack);
 
     switch (op)
     {
-        case "+":
+        case '+':
             ret = firstOp + secondOp;
             break;
-        case "-":
+        case '-':
             ret = firstOp - secondOp;
             break;
-        case "*":
+        case '*':
             ret = firstOp * secondOp;
             break;
-        case "/":
+        case '/':
             if (secondOp == 0){
                 std::cout << "Error: the second Operand is zero" << std::endl;
                 exit(1);
@@ -77,15 +77,11 @@ int calculateNum(RPN& stack ,std::deque<char>& buffer){
 }
 
 int getNum(RPN& stack){
-    int ret;
+    int ret = 0;
 
     if (!stack.empty()){
         ret = stack.top();
         stack.pop();
-    }
-    else{
-        std::cout << "Error" << std::endl;
-        exit(1);
     }
     return ret;
 }
@@ -93,13 +89,6 @@ int getNum(RPN& stack){
 char getOperation(std::deque<char>& buffer){
     char ret;
     
-    if (!buffer.empty()){
-        ret = buffer.front();
-        buffer.pop_front();
-    }
-      else{
-        std::cout << "Error" << std::endl;
-        exit(1);
-    }
+    ret = buffer.front();
     return ret;
 }
