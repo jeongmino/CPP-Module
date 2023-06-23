@@ -6,7 +6,7 @@
 #    By: junoh <junoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 17:14:26 by junoh             #+#    #+#              #
-#    Updated: 2023/06/23 17:13:04 by junoh            ###   ########.fr        #
+#    Updated: 2023/06/23 21:31:33 by junoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DEPS_DIR	:=	deps/
 SRCS		:=	$(wildcard *.cpp)
 OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 DEPS		:=	$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
-NAME		:=	bit
+NAME		:= PmergeMe
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:24:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 17:38:26 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/23 21:37:36 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include <vector>
 #include <string>
 #include <map>
 #include <utility>
