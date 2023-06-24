@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:13:28 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 21:28:08 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 01:04:15 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-static std::deque<char> makeToken(std::string str){
+static std::stack<char> makeToken(std::string str){
+    std::reverse(str.begin(), str.end());
+
     std::stringstream ss(str);
 
-    std::deque<char> tokens;
+    std::stack<char> tokens;
     std::string token;
     while (std::getline(ss, token, ' ')) {
          if (token.length() == 1){
-            tokens.push_back(token[0]);
+            tokens.push(token[0]);
         }
         else{
             std::cout << "Error : not a number: " << token << std::endl;
@@ -37,19 +39,19 @@ int main(int argc, char *argv[])
     }
 
     RPN rpn;
-    std::deque<char> buffer;
+    std::stack<char> buffer;
     int ret;
 
     buffer = makeToken(std::string(argv[1]));
     while (!buffer.empty()){
-        if (isVaildOperation(buffer.front())){
+        if (isVaildOperation(buffer.top())){
             ret = calculateNum(rpn, buffer);
             rpn.push(ret);
         }
         else{
-            rpn.push(static_cast<int>(buffer.front()) - 48);
+            rpn.push(static_cast<int>(buffer.top()) - 48);
         }
-        buffer.pop_front();
+        buffer.pop();
     }
     std::cout << rpn.top() <<std::endl;
 }

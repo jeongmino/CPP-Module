@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:46:45 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 21:27:46 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 01:04:14 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int isVaildOperation(char c){
     return 0;
 }
 
-int calculateNum(RPN& stack ,std::deque<char>& buffer){
+int calculateNum(RPN& stack ,std::stack<char>& buffer){
     int firstOp;
     int secondOp;
     int ret;
@@ -86,9 +86,9 @@ int getNum(RPN& stack){
     return ret;
 }
 
-char getOperation(std::deque<char>& buffer){
+char getOperation(std::stack<char>& buffer){
     char ret;
     
-    ret = buffer.front();
+    ret = buffer.top();
     return ret;
 }

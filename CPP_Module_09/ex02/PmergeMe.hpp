@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 17:26:22 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 01:05:36 by junoh            ###   ########.fr       */
+/*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
+/*   Updated: 2023/06/25 01:19:58 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 #include <iostream>
 #include <sstream>
-#include <stack>
-#include <algorithm>
+#include <vector>
+#include <deque>
+#include <time.h>
 
-class RPN: public std::stack<int>{
-    public:
-        RPN(void);
-        RPN(const RPN& copy);
-        RPN& operator=(const RPN& src);
-        ~RPN();
+class PmergeMe{
+    private :
+        std::deque<int> deque_;
+        std::vector<int> vector_;
+    
+    public :
+        PmergeMe(void);
+        PmergeMe(const PmergeMe& copy);
+        PmergeMe& operator=(const PmergeMe& src);
+        ~PmergeMe();
 };
 
-int isVaildNum(char c);
-int isVaildOperation(char c);
-int calculateNum(RPN& stack ,std::stack<char>& buffer);
-int getNum(RPN& stack);
-char getOperation(std::stack<char>& buffer);
 #endif
