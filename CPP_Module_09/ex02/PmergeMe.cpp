@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:33 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:42:06 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 19:48:08 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& src){
 
 PmergeMe::~PmergeMe(){}
 
-void printError(std::string reason){
-    if (reason.compare("Arguments") == 0){
-        std::cout << "wrong number of arguments" << std::endl;
-    }
-}
-
 void PmergeMe::setDeque(void){
     int num;
     char **argv = this->argv_;
@@ -46,6 +40,10 @@ void PmergeMe::setDeque(void){
     
     for (int i = 1; i < argc; i++){
         num = std::atoi(argv[i]);
+        if (num < 0){
+            printError("Negative", num);
+            exit(1);
+        }
         this->deque_.push_back(num);
     }
     return ;
@@ -58,6 +56,10 @@ void PmergeMe::setVector(void){
 
     for (int i = 1; i < argc; i++){
         num = std::atoi(argv[i]);
+        if (num < 0){
+            printError("Negative", num);
+            exit(1);
+        }
         this->vector_.push_back(num);
     }
     return ;    

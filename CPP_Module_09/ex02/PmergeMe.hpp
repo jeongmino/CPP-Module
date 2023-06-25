@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:42:34 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 19:46:49 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ class PmergeMe{
 
 };
 
-void printError(std::string reason);
+void printError(std::string reason, int num);
 
 #endif

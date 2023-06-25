@@ -6,11 +6,20 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:36:50 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:42:32 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 19:47:39 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+void printError(std::string reason, int num){
+    if (reason.compare("Arguments") == 0){
+        std::cout << "wrong number of arguments" << std::endl;
+    }
+    else if (reason.compare("Negative") == 0){
+        std::cout << "Negative number: " << num << std::endl;
+    }
+}
 
 void PmergeMe::printDeque(void){
     DeqItor it = this->deque_.begin();
