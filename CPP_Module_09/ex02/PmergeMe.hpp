@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 16:16:57 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 18:28:19 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 #include <sstream>
 #include <vector>
 #include <deque>
+#include <algorithm>
+#include <iterator>
 #include <ctime>
+
+typedef std::vector<int>::iterator VecItor;
+typedef std::deque<int>::iterator DeqItor;
 
 class PmergeMe{
     private :
@@ -44,6 +49,12 @@ class PmergeMe{
         void setVector(void);
         void printDeque(void);
         void printVector(void);
+        void merge(VecItor begin, VecItor middle, VecItor end);
+        void merge(DeqItor begin, DeqItor middle, DeqItor end);
+        void mergeSort(DeqItor begin, DeqItor end);
+        void mergeSort(VecItor begin, VecItor end);
+        void checkOrder(void);
+
 };
 
 void printError(std::string reason);
