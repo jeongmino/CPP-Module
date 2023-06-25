@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 18:28:19 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 19:06:48 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ class PmergeMe{
         void mergeSort(DeqItor begin, DeqItor end);
         void mergeSort(VecItor begin, VecItor end);
         void checkOrder(void);
+        void printResult(void);
+        std::vector<int>& getVector(void);
+        int getElement(void);
+        char** getArgv(void);
 
 };
 
