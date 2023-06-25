@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:06:48 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 19:42:34 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ class PmergeMe{
         std::vector<int>& getVector(void);
         int getElement(void);
         char** getArgv(void);
+        std::clock_t getVectorTimerStart(void);
+        std::clock_t getVectorTimerEnd(void);
+        std::clock_t getDequeTimerStart(void);
+        std::clock_t getDequeTimerEnd(void);
 
 };
 

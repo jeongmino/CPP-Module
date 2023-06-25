@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:36:50 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:10:17 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/25 19:42:32 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,17 @@ static void printAfter(PmergeMe& pme){
     }
 }
 
+static void printSortResult(PmergeMe& pme){
+    double vectorTime = static_cast<double>(pme.getVectorTimerEnd() - pme.getVectorTimerStart()) / CLOCKS_PER_SEC;
+    double DequeTime = static_cast<double>(pme.getDequeTimerEnd() - pme.getDequeTimerStart()) / CLOCKS_PER_SEC;
+    std::cout << "Time to process a range of " << pme.getElement() <<
+    " elements with std::vector : " <<  vectorTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << pme.getElement() <<
+    " elements with std::deque : " <<  DequeTime << " us" << std::endl;
+}
+
 void PmergeMe::printResult(void){
     printBefore(*this);
     printAfter(*this);
+    printSortResult(*this);
 }
