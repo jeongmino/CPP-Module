@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:33:54 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/23 17:40:23 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/27 19:11:51 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ static int checkCoin(float coin){
 }
 
 
-static void readOneDay(std::ifstream &file, IntPairMap &chart) {
+static void readChart(std::ifstream &file, IntPairMap &chart) {
 
     std::string line;
     std::string date;
@@ -163,7 +163,7 @@ void checkBitcoinChart(std::string filename, IntPairMap &chart){
         inFile.close();
         exit(1);
     }
-    readOneDay(inFile, chart);
+    readChart(inFile, chart);
 }
 
 void BitcoinExchange::showReceipt(void){

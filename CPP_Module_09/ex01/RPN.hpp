@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:26:22 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 01:05:36 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/27 21:24:38 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@
 #include <stack>
 #include <algorithm>
 
-class RPN: public std::stack<int>{
+class RPN{
+    private:
+        std::stack<int> stack_;
+
     public:
         RPN(void);
         RPN(const RPN& copy);
         RPN& operator=(const RPN& src);
         ~RPN();
+    public:
+        std::stack<int>& getStack(void) ;
 };
 
 int isVaildNum(char c);

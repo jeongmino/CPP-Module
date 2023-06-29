@@ -6,11 +6,20 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:33 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:48:08 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/27 21:29:03 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe(void){
+    this->element_ = 0;
+    this->argv_ = NULL;
+    this->vectorTimerStart_ = 0;
+    this->vectorTimerEnd_ = 0;
+    this->dequeTimerStart_ = 0;
+    this->dequeTimerEnd_ = 0;
+}
 
 PmergeMe::PmergeMe(int element, char **argv): element_(element), argv_(argv){
     this->vectorTimerStart_ = 0;
@@ -70,7 +79,6 @@ void PmergeMe::sortVector(void){
     setVector();
     mergeSort(this->vector_.begin(), this->vector_.end());
     this->vectorTimerEnd_ = std::clock();
-    // printVector();
 }
 
 void PmergeMe::sortDeque(void){
@@ -78,7 +86,6 @@ void PmergeMe::sortDeque(void){
     setDeque();
     mergeSort(this->deque_.begin(), this->deque_.end());
     this->dequeTimerEnd_ = std::clock();
-    // printDeque();
 } 
 
 std::vector<int>& PmergeMe::getVector(void){

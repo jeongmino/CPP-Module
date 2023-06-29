@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:13:28 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 15:22:51 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/27 21:25:31 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int main(int argc, char *argv[])
     while (!buffer.empty()){
         if (isVaildOperation(buffer.top())){
             ret = calculateNum(rpn, buffer);
-            rpn.push(ret);
+            rpn.getStack().push(ret);
         }
         else{
-            rpn.push(static_cast<int>(buffer.top()) - 48);
+            rpn.getStack().push(static_cast<int>(buffer.top()) - 48);
         }
         buffer.pop();
     }
-    std::cout << rpn.top() <<std::endl;
+    std::cout << rpn.getStack().top() <<std::endl;
 }

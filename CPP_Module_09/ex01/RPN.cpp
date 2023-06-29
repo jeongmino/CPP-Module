@@ -3,26 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junoh <junoh@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:46:45 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 01:04:14 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/27 21:24:51 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN(void): std::stack<int>(){}
+RPN::RPN(void){}
 
 RPN::~RPN(void){}
 
-RPN::RPN(const RPN& copy): std::stack<int>(copy){}
+RPN::RPN(const RPN& copy){
+    this->stack_ = copy.stack_;
+}
 
 RPN& RPN::operator=(const RPN& src){
-    if (this != &src){
-        std::stack<int>::operator=(src);
+    if (this != &src) {
+        this->stack_ = src.stack_;
     }
     return *this;
+}
+
+std::stack<int>& RPN::getStack() {
+    return this->stack_;
 }
 
 int isVaildNum(char c){
@@ -44,15 +50,15 @@ int isVaildOperation(char c){
     return 0;
 }
 
-int calculateNum(RPN& stack ,std::stack<char>& buffer){
+int calculateNum(RPN& rpn ,std::stack<char>& buffer){
     int firstOp;
     int secondOp;
     int ret;
     char op;
 
     op = getOperation(buffer);
-    secondOp = getNum(stack);
-    firstOp = getNum(stack);
+    secondOp = getNum(rpn);
+    firstOp = getNum(rpn);
 
     switch (op)
     {
@@ -76,12 +82,12 @@ int calculateNum(RPN& stack ,std::stack<char>& buffer){
     return ret;
 }
 
-int getNum(RPN& stack){
+int getNum(RPN& rpn){
     int ret = 0;
 
-    if (!stack.empty()){
-        ret = stack.top();
-        stack.pop();
+    if (!rpn.getStack().empty()){
+        ret = rpn.getStack().top();
+        rpn.getStack().pop();
     }
     return ret;
 }
