@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:37:59 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 18:38:18 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/29 20:19:57 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,38 @@ void PmergeMe::mergeSort(DeqItor begin, DeqItor end) {
         mergeSort(middle, end);
         merge(begin, middle, end);
     }
+}
+
+void PmergeMe::mergeSortVector(std::vector<int>& vector){
+    if (vector.size() < 2){
+        return ;
+    }
+    std::vector<int> left;
+    std::vector<int> right;
+    VecItor it = vector.begin();
+    for(int i = 0; i < vector.size() / 2; i++){
+        left.push_back(*it++);
+    }
+    for (; it != vector.end(); it++){
+        right.push_back(*it++);
+    }
+    mergeSortVector(left);
+    mergeSortVector(right);
+    VecItor it_left;
+    VecItor it_right;
+    while (it_left != left.end() && it_right != right.end()){
+        if (*it_right < *it_left){
+            left.insert(it_left, *it_right++);
+        }
+        else{
+            it_left++;
+        }
+    }
+    if (it_right != right.end()){
+        //insert last man.
+    }
+    vector.clear()
+    vector = left;
 }
 
 void PmergeMe::checkOrder(void){

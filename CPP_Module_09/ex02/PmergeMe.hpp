@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:46:49 by junoh            ###   ########.fr       */
+/*   Updated: 2023/06/29 19:59:12 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ class PmergeMe{
         std::clock_t getVectorTimerEnd(void);
         std::clock_t getDequeTimerStart(void);
         std::clock_t getDequeTimerEnd(void);
+        void mergeSortVector(std::vector<int>& vector);
 
 };
 
