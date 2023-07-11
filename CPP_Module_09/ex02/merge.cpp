@@ -6,97 +6,108 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:37:59 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/29 20:19:57 by junoh            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:04:03 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-void PmergeMe::merge(VecItor begin, VecItor middle, VecItor end) {
-    std::vector<int> temp(end - begin);
-    VecItor a = begin, b = middle, c = temp.begin();
-    while (a != middle && b != end) {
-        if (*a <= *b) {
-            *c++ = *a++;
-        } else {
-            *c++ = *b++;
+static void insertionSort(std::vector<int> &vector, int left, int right){
+    for (int i = left + 1; i <= right; i++){
+        int tmp = vector[i];
+        int j = i - 1;
+        while (j >= left && vector[j] > tmp){
+            vector[j + 1] = vector[j];
+            j--;
         }
-    }
-    std::copy(a, middle, c);
-    std::copy(b, end, c);
-    std::copy(temp.begin(), temp.end(), begin);
-}
-
-
-void PmergeMe::mergeSort(VecItor begin, VecItor end) {
-    if (end - begin > 1) {
-        VecItor middle = begin + (end - begin) / 2;
-        mergeSort(begin, middle);
-        mergeSort(middle, end);
-        merge(begin, middle, end);
+        vector[j + 1] = tmp;
     }
 }
 
-void PmergeMe::merge(DeqItor begin, DeqItor middle, DeqItor end) {
-    std::deque<int> temp;
-    DeqItor a = begin, b = middle;
-    while (a != middle && b != end) {
-        if (*a <= *b) {
-            temp.push_back(*a++);
-        } else {
-            temp.push_back(*b++);
+
+static void insertionSort(std::deque<int> &deque, int left, int right){
+    for (int i = left + 1; i <= right; i++){
+        int tmp = deque[i];
+        int j = i - 1;
+        while (j >= left && deque[j] > tmp){
+            deque[j + 1] = deque[j];
+            j--;
         }
-    }
-    while (a != middle) {
-        temp.push_back(*a++);
-    }
-    while (b != end) {
-        temp.push_back(*b++);
-    }
-    for (a = begin; a != end; ++a) {
-        *a = temp[a - begin];
+        deque[j + 1] = tmp;
     }
 }
 
-void PmergeMe::mergeSort(DeqItor begin, DeqItor end) {
-    if (end - begin > 1) {
-        DeqItor middle = begin + (end - begin) / 2;
-        mergeSort(begin, middle);
-        mergeSort(middle, end);
-        merge(begin, middle, end);
-    }
-}
 
-void PmergeMe::mergeSortVector(std::vector<int>& vector){
-    if (vector.size() < 2){
+void PmergeMe::mergeInsertSortDeque(int left, int right){
+    if (left >= right){
         return ;
     }
-    std::vector<int> left;
-    std::vector<int> right;
-    VecItor it = vector.begin();
-    for(int i = 0; i < vector.size() / 2; i++){
-        left.push_back(*it++);
+    if (right - left + 1 <= SIZE){
+        insertionSort(this->deque_, left, right);
+        return ;
     }
-    for (; it != vector.end(); it++){
-        right.push_back(*it++);
+    int mid = (left + right) / 2;
+    mergeInsertSortDeque(left, mid);
+    mergeInsertSortDeque(mid + 1, right);
+    mergeSortDeque(left, mid, right);
+}
+
+void PmergeMe::mergeInsertSortVector(int left, int right){
+    if (left >= right){
+        return ;
     }
-    mergeSortVector(left);
-    mergeSortVector(right);
-    VecItor it_left;
-    VecItor it_right;
-    while (it_left != left.end() && it_right != right.end()){
-        if (*it_right < *it_left){
-            left.insert(it_left, *it_right++);
-        }
-        else{
-            it_left++;
-        }
+    if (right - left + 1 <= SIZE){
+        insertionSort(this->vector_, left, right);
+        return ;
     }
-    if (it_right != right.end()){
-        //insert last man.
-    }
-    vector.clear()
-    vector = left;
+    int mid = (left + right) / 2;
+    mergeInsertSortVector(left, mid);
+    mergeInsertSortVector(mid + 1, right);
+    mergeSortVector(left, mid, right);
+}
+
+void PmergeMe::mergeSortDeque(int left, int mid, int right){
+    std::deque<int> &deq = this->deque_;
+	std::deque<int> tmp(right - left + 1);
+	int i = left;
+	int j = mid + 1;
+	int k = 0;
+
+	while (i <= mid && j <= right)
+	{
+		if (deq[i] <= deq[j])
+			tmp[k++] = deq[i++];
+		else
+			tmp[k++] = deq[j++];
+	}
+	while (i <= mid)
+		tmp[k++] = deq[i++];
+	while (j <= right)
+		tmp[k++] = deq[j++];
+	for (i = left; i <= right; i++)
+		deq[i] = tmp[i - left];
+}
+
+void PmergeMe::mergeSortVector(int left, int mid, int right){
+    std::vector<int> &vec = this->vector_;
+    std::vector<int> tmp(right - left + 1);
+    int i = left;
+	int j = mid + 1;
+	int k = 0;
+
+	while (i <= mid && j <= right)
+	{
+		if (vec[i] <= vec[j])
+			tmp[k++] = vec[i++];
+		else
+			tmp[k++] = vec[j++];
+	}
+	while (i <= mid)
+		tmp[k++] = vec[i++];
+	while (j <= right)
+		tmp[k++] = vec[j++];
+	for (i = left; i <= right; i++)
+		vec[i] = tmp[i - left];
 }
 
 void PmergeMe::checkOrder(void){
@@ -126,6 +137,6 @@ void PmergeMe::checkOrder(void){
         }
     }
     if (!sign){
-        std::cout << "vector success" << std::endl;
+        std::cout << "deque success" << std::endl;
     }
 }

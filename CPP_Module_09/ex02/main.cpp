@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:59:08 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/25 19:48:21 by junoh            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:06:37 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ int main(int argc, char *argv[])
     pme.sortVector();
     pme.sortDeque();
     pme.printResult();
-    
 }

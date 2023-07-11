@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:33 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/27 21:29:03 by junoh            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:59:33 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,14 @@ void PmergeMe::setVector(void){
 void PmergeMe::sortVector(void){
     this->vectorTimerStart_ = std::clock();
     setVector();
-    mergeSort(this->vector_.begin(), this->vector_.end());
+    mergeInsertSortVector(0, this->vector_.size() - 1);
     this->vectorTimerEnd_ = std::clock();
 }
 
 void PmergeMe::sortDeque(void){
     this->dequeTimerStart_ = std::clock();
     setDeque();
-    mergeSort(this->deque_.begin(), this->deque_.end());
+    mergeInsertSortDeque(0, this->deque_.size() - 1);
     this->dequeTimerEnd_ = std::clock();
 } 
 

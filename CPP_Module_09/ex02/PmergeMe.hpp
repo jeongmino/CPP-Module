@@ -6,7 +6,7 @@
 /*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 01:07:29 by junoh             #+#    #+#             */
-/*   Updated: 2023/06/29 19:59:12 by junoh            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:05:59 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <algorithm>
 #include <iterator>
 #include <ctime>
+
+#define SIZE 3
 
 typedef std::vector<int>::iterator VecItor;
 typedef std::deque<int>::iterator DeqItor;
@@ -49,12 +51,12 @@ class PmergeMe{
         void setVector(void);
         void printDeque(void);
         void printVector(void);
-        void merge(VecItor begin, VecItor middle, VecItor end);
-        void merge(DeqItor begin, DeqItor middle, DeqItor end);
-        void mergeSort(DeqItor begin, DeqItor end);
-        void mergeSort(VecItor begin, VecItor end);
         void checkOrder(void);
         void printResult(void);
+        void mergeInsertSortDeque(int left, int right);
+        void mergeInsertSortVector(int left, int right);
+        void mergeSortDeque(int left, int mid, int right);
+        void mergeSortVector(int left, int mid, int right);
         std::vector<int>& getVector(void);
         int getElement(void);
         char** getArgv(void);
